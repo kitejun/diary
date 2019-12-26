@@ -304,6 +304,7 @@ async getDetail(){
   render() {
     const backstyle={
       background:"white",
+      paddingTop:"3rem"
     }
     
     const buttonstyle={
@@ -326,6 +327,7 @@ async getDetail(){
         <Container maxWidth="sm">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
+              <h2 style={{fontWeight:"400",textAlign:"center"}}>UPDATE</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 제목:
                 <TextField
