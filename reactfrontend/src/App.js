@@ -86,13 +86,22 @@ export class Home extends Component {
                   margin="normal"
                   variant="outlined"
                 />
-                
+                <TextField
+                  id="outlined-name"
+                  label="작성자 아이디"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
                 <input 
                   type="file" 
                   name="image"
                   value={this.state.image}
                   onChange={this.handlingChange}></input>
-                
+
                 {/* <br /> */}
 
                 {/* <textarea 
