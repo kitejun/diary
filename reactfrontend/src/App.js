@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
+import Calendar from 'react-calendar';
 
 export class Home extends Component {
   
@@ -48,7 +49,23 @@ export class Home extends Component {
     await api.deletePost(id)
     this.getPosts()
   }
-  
+
+  // 수정하기
+  handlingUpdate = async (id) => {
+    const _results = await api.getAllPosts()
+    this.setState({
+      results: _results.data.filter(_results.data.id == id)
+    })
+    await api.UpdatePost(id)
+    this.setState({title: '', content: '', author: ''})
+    this.getPosts()
+  }
+
+  handleImageChange = (e) => {
+    this.setState({
+      image: e.target.files[0]
+    })
+  };
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -129,7 +146,6 @@ export class Home extends Component {
                   variant="outlined"
                   className="outline-content"
                   style={formstyle}
-
                 />
 
                 {/* <br /> */}
@@ -163,7 +179,9 @@ export class Home extends Component {
 
                   </CardContent>
                   <CardActions>
-                    <Button value={post.id} onClick={() => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
+                    <Button value={post.id}><Link className="navButton" to="/update">수정하기</Link></Button>
                   </CardActions>
                </Card>
               )
@@ -173,9 +191,107 @@ export class Home extends Component {
         </Container>
       </div>
     )
+  
   }
 }
 
+// 게시글 수정하기
+export class Update extends Component {
+
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+      title: "",
+      content: "",
+      //image: "",
+      author: "",
+      results: [],
+    }
+  }
+
+  render() {
+    const backstyle={
+      background:"white",
+    }
+    
+    const buttonstyle={
+      background:"white",
+    }
+
+    const formstyle={
+      background:"white",
+    }
+
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+    }
+
+    return (
+      <div className="App">
+        <Container maxWidth="lg">
+          <div className="fixed">
+          <div className="PostingSection">
+            <Paper className="PostingPaper"  style={backstyle}>
+              <h2>오늘의 일기</h2>
+              <form className="PostingForm" onSubmit={this.handlingSubmit}>
+                <TextField
+                  id="outlined-name"
+                  label="글 제목"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  style={formstyle}
+                />
+                <TextField
+                  id="outlined-name"
+                  label="name"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
+                <input 
+                  type="file" 
+                  name="image"
+                  value={this.state.image}
+                  style={filestyle}
+                  className="filebutton"
+                  onChange={this.handlingChange}></input>
+
+                <TextField
+                  id="outlined-name"
+                  label="본문"
+                  name="content"
+                  multiline
+                  rowsMax="4"
+                  value={this.state.content}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  className="outline-content"
+                  style={formstyle}
+
+                />
+
+                {/* <br /> */}
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
+              </form>
+            </Paper>
+          </div>
+        </div>
+        </Container>
+        </div>
+    )
+  }
+}
 
 export class Login extends Component {
   
@@ -197,23 +313,35 @@ export class Login extends Component {
   render() {
     return (
       <div>
+
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
+        <h1>asdasd</h1>
+
       </div>
     )
   }
 }
-
 export class Signup extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>
-        <h3>2, 회원가입 페이지</h3>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-      </div>
+        <br></br>
+        <br></br>
+        <br></br>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+    />
+    </div>
     )
   }
 }
