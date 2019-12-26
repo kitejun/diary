@@ -42,6 +42,7 @@ ReactDOM.render(
       <Route path="/login" component={Login} />
       <Route path="/cal" component={Cal} />
       <Route path="/third" component={Third} />
+      <Route path="/update" component={Update} />
     </div>
   </Router>,
   document.getElementById('root')
