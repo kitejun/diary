@@ -10,13 +10,13 @@ class Header extends Component {
               <Link to={'/'}>홈</Link>
             </li>
             <li>
-              <Link to={'/first'}>첫번째</Link>
+              <Link to={'/login'}>로그인</Link>
             </li>
             <li>
-              <Link to={'/second'}>두번째</Link>
+              <Link to={'/signup'}>회원가입</Link>
             </li>
             <li>
-              <Link to={'/third'}>세번째</Link>
+              <Link to={'/third'}>테스트</Link>
             </li>
           </ul>
         </div>

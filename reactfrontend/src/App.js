@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// npm install react-router-dom
 import { Route, Link } from 'react-router-dom'
 import './App.css';
 // handlingSubmit() 에서 사용
@@ -147,21 +148,21 @@ export class Home extends Component {
 }
 
 
-export class First extends Component {
+export class Login extends Component {
   render() {
     return (
       <div>
-        <h2>1, 첫번째 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }
 }
 
-export class Second extends Component {
+export class Signup extends Component {
   render() {
     return (
       <div>
-        <h3>2, 두번째 페이지</h3>
+        <h3>2, 회원가입 페이지</h3>
       </div>
     )
   }
