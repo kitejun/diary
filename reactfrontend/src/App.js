@@ -218,7 +218,27 @@ export class Home extends Component {
   }
 }
 
+export class Cal extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
 
+  render() {
+    return (
+      <div>
+        <center>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+      
+    />
+    </center>
+    </div>
+    )
+  }
+}
 // 게시글 수정하기
 export class Update extends Component {
 
