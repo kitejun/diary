@@ -174,7 +174,7 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글  <div class="date">{post.created_at }</div> <img src="/images/label2.png" className="img"/>
+                      {post.id}번째 글  <img src="/images/label2.png" className="img"/>
                       
                       
                       
