@@ -56,11 +56,6 @@ export class Home extends Component {
     this.getPosts()
   }
   
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -119,7 +114,7 @@ export class Home extends Component {
                 />
                 <TextField
                   id="outlined-name"
-                  label="작성자 아이디"
+                  label="닉네임"
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
@@ -127,14 +122,6 @@ export class Home extends Component {
                   variant="outlined"
                 />
 
-                <input 
-                  type="file" 
-                  name="image"
-                  value={this.state.image}
-                  style={filestyle}
-                  className="filebutton"
-                  onChange={this.handlingChange}></input>
-                  
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -159,12 +146,12 @@ export class Home extends Component {
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>제출하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>저장하기</Button>
               </form>
             </Paper>
           </div>
-</div>
-<div className="none-fixed">
+        </div>
+        <div className="none-fixed">
           <div className="ViewSection">
             {
               this.state.results.map(
@@ -182,9 +169,11 @@ export class Home extends Component {
 
                       />
                     </Typography>
+                    <h4>작성자 : {post.author}</h4>
+                    <h4>작성일 : {post.created_at}</h4>
                     <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
-                    <h2>작성자 : {post.author}</h2>
+
                   </CardContent>
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
