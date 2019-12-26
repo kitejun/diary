@@ -78,11 +78,11 @@ export class Home extends Component {
     }
     
     const buttonstyle={
-      background:"rgba(0,80,178,0.2)",
+      background:"white",
     }
 
     const formstyle={
-      background:"rgba(0,80,165,0.1)",
+      background:"white",
     }
 
     const filestyle={
@@ -120,7 +120,6 @@ export class Home extends Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
-                  style={formstyle}
                 />
 
                 {/* <br /> */}
@@ -160,7 +159,7 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글
+                      {post.id}번째 글<img src="/images/label2.png" className="img"/>
                     </Typography>
                     <Typography variant="h5" component="h2">
                       <PostView

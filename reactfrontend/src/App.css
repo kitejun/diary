@@ -4,7 +4,7 @@ body {
 }
 .img{
   position: relative;
-  
+  float: right;
 }
 .App{
   position: relative;
