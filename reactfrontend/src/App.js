@@ -208,6 +208,9 @@ export class Login extends Component {
     return (
       <div>
         <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }
@@ -218,6 +221,8 @@ export class Signup extends Component {
     return (
       <div>
         <h3>2, 회원가입 페이지</h3>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }
