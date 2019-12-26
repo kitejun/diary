@@ -24,6 +24,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
+import format from 'string-format'
 
 export class Home extends Component {
   
@@ -54,17 +55,6 @@ export class Home extends Component {
 
   handlingDelete = async (id) => {
     await api.deletePost(id)
-    this.getPosts()
-  }
-
-  // 수정하기
-  handlingUpdate = async (id) => {
-    const _results = await api.getAllPosts()
-    this.setState({
-      results: _results.data.filter(_results.data.id == id)
-    })
-    await api.UpdatePost(id)
-    this.setState({title: '', content: '', author: ''})
     this.getPosts()
   }
 
@@ -195,7 +185,10 @@ export class Home extends Component {
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
-                    <Button value={post.id}><Link className="navButton" to="/update">수정하기</Link></Button>
+                    <Button href={format('./update/{}',post.id)}>
+                        수정하기
+                    </Button>
+  
                   </CardActions>
                </Card>
               )
@@ -218,10 +211,27 @@ export class Update extends Component {
     this.state = {
       title: "",
       content: "",
-      //image: "",
       author: "",
       results: [],
     }
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
+  handlingUpdate = async (event) => {
+    event.preventDefault() // event의 기본적인 기능을 하지않게 함
+    const id = this.props.match.params.id 
+    console.log(this.state.title)
+    let result = await api.updatePost(id, 
+    {
+      title: this.state.title,
+      content: this.state.content,
+      author: this.state.author,
+    })
+    console.log("수정 완료!", result);
+    this.setState({title: '', content: '', author: ''})
   }
 
   render() {
@@ -242,16 +252,16 @@ export class Update extends Component {
       border: "solid 1px #ccc",
       borderRadius: "3px",
       height:"2rem",
-    }
-
+    }  
+    const id = this.props.match.params.id 
     return (
       <div className="App">
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <h2>오늘의 일기</h2>
-              <form className="PostingForm" onSubmit={this.handlingSubmit}>
+              <h2>{id}</h2>
+              <form className="PostingForm" onSubmit={this.handlingUpdate}>
                 <TextField
                   id="outlined-name"
                   label="글 제목"
@@ -292,11 +302,11 @@ export class Update extends Component {
                   variant="outlined"
                   className="outline-content"
                   style={formstyle}
-
                 />
 
                 {/* <br /> */}
                 <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
+                {/* <Button value={id} onClick={(event) => this.handlingUpdate(id)} color="secondary" size="small">수정하기</Button> */}
               </form>
             </Paper>
           </div>

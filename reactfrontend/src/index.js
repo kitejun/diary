@@ -42,7 +42,7 @@ ReactDOM.render(
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/third" component={Third} />
-      <Route path="/update" component={Update} />
+      <Route path="/update/:id" component={Update} />
     </div>
   </Router>,
   document.getElementById('root')
