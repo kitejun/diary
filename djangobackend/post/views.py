@@ -11,12 +11,6 @@ class PostViewset(viewsets.ModelViewSet):
     queryset = models.Post.objects.all()
     serializer_class = serializers.PostSerializer
 
-<<<<<<< HEAD
-
-class CommentViewset(viewsets.ModelViewSet):
-    queryset = models.Comment.objects.all()
-    serializer_class = serializers.CommentSerializer
-=======
     filter_backends = [SearchFilter]
     search_fields = ('title', 'content')
 
@@ -28,4 +22,3 @@ class CommentViewset(viewsets.ModelViewSet):
         qs = super().get_queryset()
 
         return qs
->>>>>>> master

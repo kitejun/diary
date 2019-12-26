@@ -23,17 +23,3 @@ class Review(models.Model):
     created_at = models.DateField(default=timezone.now) # 등록일
     buy_user = models.IntegerField(default=1) # 구매자
 '''
-<<<<<<< HEAD
-
-class Comment(models.Model):
-    post=models.ForeignKey(Post, on_delete=models.CASCADE, null=True, related_name='comments')
-    comment_date = models.DateTimeField(auto_now_add=True)
-    comment_content = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.comment_body
-    
-    class Meta:
-        ordering=['-id']
-=======
->>>>>>> master

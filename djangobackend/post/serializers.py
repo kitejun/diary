@@ -7,14 +7,4 @@ class PostSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = models.Post
-<<<<<<< HEAD
-        fields = '__all__'
-
-    
-class CommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Comment
-        fields = '__all__'
-=======
         fields = ('id', 'title', 'content', 'author', 'image')   
->>>>>>> master

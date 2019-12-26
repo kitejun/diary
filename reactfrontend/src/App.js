@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-=======
 // npm install react-router-dom
 import { Route, Link } from 'react-router-dom'
->>>>>>> master
 import './App.css';
 // handlingSubmit() 에서 사용
 import api from './api';
@@ -16,6 +13,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -32,7 +35,6 @@ export class Home extends Component {
       author: "",
       results: [],
     }
-
   }
 
   componentDidMount() {
@@ -74,9 +76,6 @@ export class Home extends Component {
     this.setState({title: '', content: '', author: ''})
     this.getPosts()
   }
-
-
-
 
   render() {
     const backstyle={
@@ -181,44 +180,12 @@ export class Home extends Component {
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
                   </CardActions>
-
-                  {/* 댓글시작 */}
-                  <div className="CommentSection">
-                    <Paper className="CommentPaper">
-                      <h5>댓글작성하기</h5>
-                      <form className="CommentForm" onSubmit={this.handlingSubmit2}>
-               
-                        {/* <br /> */}
-
-                        <TextField
-                          id="outlined-name"
-                          label="댓글"
-                          name="content"
-                          multiline
-                          rowsMax="3"
-                          value={this.state.content}
-                          onChange={this.handlingChange}
-                          margin="normal"
-                          variant="outlined"
-                        />
-                        {/* <br /> */}
-                        <Button variant="outlined" color="primary" type="submit">제출하기</Button>
-                      </form>
-                    </Paper>
-                  </div>
-                  {/* 댓글종료 */}
                </Card>
               )
             }
           </div>
           </div>
         </Container>
-
-
-
-
-
-
       </div>
       
     )
@@ -245,9 +212,8 @@ export class Login extends Component {
   
   render() {
     return (
-      <div>
-        <h2>1, 로그인 페이지</h2>
-      </div>
+     <div>회원가입</div>
+  
     )
   }
 }
@@ -265,11 +231,6 @@ export default function FadeMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-<<<<<<< HEAD
-export default App;
-
-
-=======
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -330,4 +291,3 @@ class Item extends Component {
     )
   }
 }
->>>>>>> master

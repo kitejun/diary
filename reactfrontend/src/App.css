@@ -28,16 +28,6 @@ body {
   margin-bottom: 2rem;
 }
 
-<<<<<<< HEAD
-.CommentForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.CommentPaper {
-  margin: 1rem;
-  padding: 1rem;
-=======
 .PostingSection{
   float: left;
   width:80%;
@@ -88,5 +78,4 @@ body {
   .ViewSection{
     width: 100%;
   }
->>>>>>> master
 }
