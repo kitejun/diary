@@ -20,6 +20,7 @@ class App extends React.Component {
     this.state = {
       title: "",
       content: "",
+      // image: "",
       results: [],
     }
   }
@@ -49,10 +50,12 @@ class App extends React.Component {
       {
         title: this.state.title,
         content: this.state.content,
+        image: this.state.image,
       }
     );
     console.log("작성 완료!", result);
-    this.setState({title: '', content: ''})
+    this.setState({title: '', content: '', image: ''})
+    // this.setState({title: '', content: ''})
     this.getPosts()
   }
 
@@ -73,7 +76,13 @@ class App extends React.Component {
                   margin="normal"
                   variant="outlined"
                 />
-
+                
+                <input 
+                  type="file" 
+                  name="image"
+                  value={this.state.image}
+                  onChange={this.handlingChange}></input>
+                
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -100,13 +109,13 @@ class App extends React.Component {
               </form>
             </Paper>
           </div>
-
           <div className="ViewSection">
             {
               this.state.results.map(
                 (post) =>
                 <Card className={'card'}>
                   <CardContent>
+                    <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 대나무
                     </Typography>
