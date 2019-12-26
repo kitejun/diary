@@ -191,17 +191,8 @@ export class Home extends Component {
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 글  <img src="/images/label2.png" className="img"/>
                       
-                      
-                      
                     </Typography>
-                    <Typography variant="h5" component="h2">
-                      <PostView
-                      key={post.id}
-                      title={post.title}
-                      style={formstyle}
-                      
-                      />
-                    </Typography>
+                    
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
                     <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
                     <img src={post.image} alt=""/>
@@ -211,7 +202,6 @@ export class Home extends Component {
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small" style={buttonstyle2}>삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
-                    {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
                     <Button href={format('./update/{}',post.id)}>
                         수정하기
                     </Button>
@@ -257,7 +247,7 @@ async getDetail(){
   handlingChange = (event) => {
     this.setState({[event.target.name]: event.target.value})    
   }
-  handlingSubmit = async (event) => {
+  handlingUpdate  = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
     const id = this.props.match.params.id 
     let result = await api.updatePost(id, 
@@ -336,7 +326,8 @@ async getDetail(){
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>                {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
+
               </form>
             </Paper>
           </div>
