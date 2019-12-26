@@ -79,7 +79,7 @@ export class Home extends Component {
 
   render() {
     const backstyle={
-      background:"skyblue",
+      background:"white",
     }
     
     const buttonstyle={
@@ -104,7 +104,7 @@ export class Home extends Component {
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <h2>일기장</h2>
+              <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
                   id="outlined-name"
