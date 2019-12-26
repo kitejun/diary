@@ -118,7 +118,7 @@ export class Home extends Component {
                 />
                 <TextField
                   id="outlined-name"
-                  label="작성자 아이디"
+                  label="name"
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
