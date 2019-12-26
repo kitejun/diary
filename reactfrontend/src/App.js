@@ -56,11 +56,6 @@ export class Home extends Component {
     this.getPosts()
   }
   
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -126,14 +121,6 @@ export class Home extends Component {
                   variant="outlined"
                 />
 
-                <input 
-                  type="file" 
-                  name="image"
-                  value={this.state.image}
-                  style={filestyle}
-                  className="filebutton"
-                  onChange={this.handlingChange}></input>
-                  
                 {/* <br /> */}
 
                 {/* <textarea 
