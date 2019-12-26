@@ -181,9 +181,9 @@ export class Home extends Component {
 
                       />
                     </Typography>
+                    <h4>작성자 : {post.author}</h4>
                     <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
-                    <h2>작성자 : {post.author}</h2>
                   </CardContent>
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
