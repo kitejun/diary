@@ -1,15 +1,17 @@
 body {
-  background-color: #f5f5f5;
+
 }
 
 .PostingForm {
   display: flex;
   flex-direction: column;
+  
 }
 
 .PostingPaper {
   margin: 1rem;
   padding: 1rem;
+
 }
 
 .card {
