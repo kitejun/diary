@@ -22,7 +22,7 @@ class Header extends Component {
               <Link to={'/third'}>테스트</Link>
             </li>
           </ul>
-          </nav>
+          {/* </nav> */}
         </div>
       )
     }
