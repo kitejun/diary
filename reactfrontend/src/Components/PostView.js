@@ -19,3 +19,15 @@ export default class PostView extends Component {
         )
     }
 }
+
+export default class CommentView extends Component {
+    render() {
+        const {id, content} = this.props
+        return (
+            <div>
+                {id}
+                <p>{content}</p>
+            </div>
+        )
+    }
+}

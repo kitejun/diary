@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import './App.css';
 // handlingSubmit() 에서 사용
 import api from './api';
@@ -22,6 +22,7 @@ class App extends React.Component {
       content: "",
       results: [],
     }
+
   }
 
   componentDidMount() {
@@ -55,6 +56,9 @@ class App extends React.Component {
     this.setState({title: '', content: ''})
     this.getPosts()
   }
+
+
+
 
   render() {
     return (
@@ -122,46 +126,47 @@ class App extends React.Component {
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
                   </CardActions>
 
-                  <Paper className="CommentingPaper">
+                  {/* 댓글시작 */}
+                  <div className="CommentSection">
+                    <Paper className="CommentPaper">
+                      <h5>댓글작성하기</h5>
+                      <form className="CommentForm" onSubmit={this.handlingSubmit2}>
+               
+                        {/* <br /> */}
 
-
-                  <div className="CommentName">
-                   <h5>댓글 작성하기</h5>
-                   <form className="PostingForm" onSubmit={this.handlingSubmit}>
-                
-                <TextField
-                  id="outlined-name"
-                  label="댓글"
-                  name="comment_content"
-                  multiline
-                  rowsMax="4"
-                  value={this.state.comment_content}
-                  onChange={this.handlingChange}
-                  margin="normal"
-                  variant="outlined"
-                />
-
-                {/* <br /> */}
-                
-                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
-              </form>
+                        <TextField
+                          id="outlined-name"
+                          label="댓글"
+                          name="content"
+                          multiline
+                          rowsMax="3"
+                          value={this.state.content}
+                          onChange={this.handlingChange}
+                          margin="normal"
+                          variant="outlined"
+                        />
+                        {/* <br /> */}
+                        <Button variant="outlined" color="primary" type="submit">제출하기</Button>
+                      </form>
+                    </Paper>
                   </div>
-              
-            </Paper>
-
-
-
-
-
-
+                  {/* 댓글종료 */}
                </Card>
               )
             }
           </div>
         </Container>
+
+
+
+
+
+
       </div>
     )
   }
 }
 
 export default App;
+
+

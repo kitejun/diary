@@ -15,3 +15,13 @@ body {
 .card {
   margin-bottom: 2rem;
 }
+
+.CommentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.CommentPaper {
+  margin: 1rem;
+  padding: 1rem;
+}

@@ -17,5 +17,20 @@ export default{
     deletePost(id) {
         return axios.delete('/posts/' + String(id))
     },
+
+    // 모든 댓글 불러오기
+    getAllComments(){
+        return axios.get('/comments/')
+    },
+    // 댓글 작성하기
+    createComment(data){
+        return axios.post('/comments/', data)
+    },
+    
+    deleteComment(id) {
+        return axios.delete('/comments/' + String(id))
+    },
+
     
 }
+
