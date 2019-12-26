@@ -100,13 +100,13 @@ class App extends React.Component {
               </form>
             </Paper>
           </div>
-
           <div className="ViewSection">
             {
               this.state.results.map(
                 (post) =>
                 <Card className={'card'}>
                   <CardContent>
+                    <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 대나무
                     </Typography>
