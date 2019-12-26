@@ -17,6 +17,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
+import moment from 'moment/moment.js'
+// npm install moment --save
 
 export class Home extends Component {
   
@@ -27,6 +29,14 @@ export class Home extends Component {
       content: "",
       //image: "",
       author: "",
+      comments: [
+        {
+          writer:{
+            name:"",
+            content:"",
+          }
+        }
+      ],
       results: [],
     }
   }
@@ -168,7 +178,7 @@ export class Home extends Component {
                     </Typography>
                     <h4>작성자 : {post.author}</h4>
                     
-                    <h4>작성일 : {post.created_at}</h4>
+                    <h4>작성일 : {moment(post.created_at).format('LLL')}</h4>
                     <h2>{post.content}</h2>
 
                   </CardContent>
@@ -177,6 +187,14 @@ export class Home extends Component {
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
                     <Button value={post.id}><Link className="navButton" to="/update">수정하기</Link></Button>
                   </CardActions>
+                  <Card>
+                    <cCardContent>
+
+                    </cCardContent>
+
+
+                  </Card>
+
                </Card>
               )
             }
@@ -278,6 +296,7 @@ export class Update extends Component {
                 {/* <br /> */}
                 <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
               </form>
+             
             </Paper>
           </div>
         </div>

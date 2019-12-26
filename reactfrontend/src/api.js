@@ -26,5 +26,28 @@ export default{
 
     updatePost(id) {
         return axios.patch('/posts/' + String(id))
-    },   
+    },
+    
+     // 모든 댓글 불러오기
+     getAllContents(){
+        return axios.get('/contents/')
+    },
+
+    // 하나의 댓글 불러오기
+    getContent(id){
+        return axios.get('/contents/' + String(id))
+    },
+
+    // 댓글 작성하기
+    createContent(data){
+        return axios.post('/Contents/', data)
+    },
+    
+    deletePost(id) {
+        return axios.delete('/posts/' + String(id))
+    },
+
+    updatePost(id) {
+        return axios.patch('/posts/' + String(id))
+    },
 }

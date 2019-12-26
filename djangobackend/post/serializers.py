@@ -6,3 +6,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Post
         fields = ('id', 'title', 'image', 'content', 'author', 'created_at', 'updated_at')   
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Comment
+        fields = '__all__'

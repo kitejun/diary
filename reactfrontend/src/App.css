@@ -88,3 +88,13 @@ body {
     width: 100%;
   }
 }
+
+.CommentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.CommentPaper {
+  margin: 1rem;
+  padding: 1rem;
+}

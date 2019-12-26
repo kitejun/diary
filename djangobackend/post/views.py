@@ -19,3 +19,8 @@ class PostViewset(viewsets.ModelViewSet):
         qs = super().get_queryset()
 
         return qs
+
+
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = models.Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
