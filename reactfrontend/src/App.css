@@ -12,7 +12,7 @@ body {
 }
 
 .PostingPaper {
-  margin-right: 2rem;
+  margin-right: 1rem;
   padding: 2rem;
 }
 
@@ -47,10 +47,12 @@ body {
     width:100%;
     height:30rem;
   }
-  .PostingPaper {
+  .PostingPaper div{
     margin-right: 0;
     padding: 2rem;
+    background-color: burlywood;
   }
+
   .fixed{
     position: static;
     width: 100%;

@@ -57,12 +57,15 @@ class App extends React.Component {
   }
 
   render() {
+    const backstyle={
+      background:"skyblue",
+    }
     return (
       <div className="App">
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper">
+            <Paper className="PostingPaper" >
               <h2>대나무 숲 글 작성하기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -74,9 +77,7 @@ class App extends React.Component {
                   margin="normal"
                   variant="outlined"
                 />
-                <TextField
-                  파일자리
-                />
+                
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -112,6 +113,7 @@ class App extends React.Component {
                 (post) =>
                 <Card className={'card'}>
                   <CardContent>
+                    <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 대나무
                     </Typography>
