@@ -66,6 +66,28 @@ export class Home extends Component {
   }
 
   render() {
+<<<<<<< Updated upstream
+=======
+    const backstyle={
+      background:"white",
+    }
+    
+    const buttonstyle={
+      background:"rgba(0,80,178,0.2)",
+    }
+
+    const formstyle={
+      background:"rgba(0,80,165,0.1)",
+    }
+
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+
+    }
+>>>>>>> Stashed changes
     return (
 
       <div className="App">
@@ -83,7 +105,21 @@ export class Home extends Component {
                   margin="normal"
                   variant="outlined"
                 />
+<<<<<<< Updated upstream
                 
+=======
+                <TextField
+                  id="outlined-name"
+                  label="작성자 아이디"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  style={formstyle}
+                />
+
+>>>>>>> Stashed changes
                 <input 
                   type="file" 
                   name="image"
