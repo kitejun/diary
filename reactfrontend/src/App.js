@@ -23,7 +23,6 @@ import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
-import Calendar from 'react-calendar';
 
 export class Home extends Component {
   
@@ -74,15 +73,14 @@ export class Home extends Component {
   }
 
   render() {
-    const backstyle={
-      background:"white",
-    }
-    
     const buttonstyle={
-      background:"white",
+      background:"rgba(0,80,178,0.2)",
     }
 
     const formstyle={
+      background:"rgba(0,80,165,0.1)",
+    }
+    const backstyle={
       background:"white",
     }
 
@@ -121,6 +119,7 @@ export class Home extends Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  style={formstyle}
                 />
 
                 {/* <br /> */}
@@ -187,7 +186,6 @@ export class Home extends Component {
         </Container>
       </div>
     )
-  
   }
 }
 
@@ -212,36 +210,23 @@ export class Login extends Component {
   render() {
     return (
       <div>
-
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
-        <h1>asdasd</h1>
-
       </div>
     )
   }
 }
 
 export class Signup extends Component {
-  state = {
-    date: new Date(),
-  }
-   
-  onChange = date => this.setState({ date })
-
   render() {
     return (
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-    <Calendar
-      onChange={this.onChange}
-      value={this.state.date}
-    />
-    </div>
+        <h3>2, 회원가입 페이지</h3>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+      </div>
     )
   }
 }
