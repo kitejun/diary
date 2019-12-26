@@ -30,18 +30,14 @@ ReactDOM.render(
                             My Diary
                         </Typography>
                         <Button color="inherit"><Link className="navButton" to="/">Home</Link></Button>
-                        <Button color="inherit"><Link className="navButton" to="/login">Login</Link></Button>
                         <Button color="inherit"><Link className="navButton" to="/cal">Calender</Link></Button>
-                        <Button color="inherit"><Link className="navButton" to="/third">Test</Link></Button>
                     </Toolbar>
                 </AppBar>
             </div>
     <div>
       <Header />
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
       <Route path="/cal" component={Cal} />
-      <Route path="/third" component={Third} />
       {/* <Route path="/update" component={Update} /> */}
     </div>
   </Router>,
