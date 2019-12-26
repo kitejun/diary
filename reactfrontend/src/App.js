@@ -100,7 +100,6 @@ class App extends React.Component {
                 />
 
                 {/* <br /> */}
-                
                 <Button variant="outlined" color="primary" type="submit">제출하기</Button>
               </form>
             </Paper>

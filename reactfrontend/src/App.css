@@ -11,9 +11,13 @@ body {
   flex-direction: column;
 }
 
-.PostingPaper {
+.PostingPaper{
   margin-right: 1rem;
   padding: 2rem;
+}
+
+.PostingPaper div{
+  margin-bottom: none;
 }
 
 .card {
@@ -30,27 +34,26 @@ body {
 }
 .fixed{
   position: fixed;
-  width: 35%;
+  width: 34%;
 }
 .none-fixed{
   float: right;
-  width: 58%;
+  width: 56%;
 }
 .outline-content div{
   height: 12rem;
-  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 1000px)  {
   .PostingSection{
     float: none;
     width:100%;
-    height:30rem;
+    height:25rem;
   }
-  .PostingPaper div{
+  .PostingPaper{
     margin-right: 0;
     padding: 2rem;
-    background-color: burlywood;
+
   }
 
   .fixed{
@@ -63,7 +66,6 @@ body {
   }
   .outline-content div{
     height: 6rem;
-    margin-bottom: 1rem;
   }
   .ViewSection{
     width: 100%;
