@@ -41,10 +41,10 @@ export class Home extends Component {
     this.setState({[event.target.name]: event.target.value})    
   }
 
-  // handlingDelete = async (id) => {
-  //   await api.deletePost(id)
-  //   this.getPosts()
-  // }
+  handlingDelete = async (id) => {
+    await api.deletePost(id)
+    this.getPosts()
+  }
   
   handleImageChange = (e) => {
     this.setState({
