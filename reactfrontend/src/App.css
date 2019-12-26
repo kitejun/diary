@@ -5,7 +5,7 @@ body {
 .img{
   position: relative;
   float: right;
-  bottom: 16px;
+  bottom: 28px;
 }
 .App{
   position: relative;
@@ -39,7 +39,8 @@ body {
 }
 
 .PostingSection{
-  float: left;
+  float: right;
+  margin-right: 4rem;
   width:80%;
   height: 50rem;
 }
@@ -57,11 +58,11 @@ body {
 .outline-content div{
   height: 12rem;
 }
-.filebutton input{
+/* .filebutton input{
   height: 10rem;
   width: 10rem;
   background-color: cadetblue;
-}
+} */
 @media screen and (max-width: 1000px)  {
   .PostingSection{
     float: none;

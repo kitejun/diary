@@ -91,13 +91,22 @@ export class Home extends Component {
   render() {
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
+      fontWeight:"600",
     }
-
+    const buttonstyle2={
+      fontWeight:"600",
+      textDecoration:"none",
+    }
     const formstyle={
       background:"rgba(0,80,165,0.1)",
     }
     const backstyle={
       background:"white",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"12px",
+      paddingBottom:"1rem",
+
     }
 
     const filestyle={
@@ -106,6 +115,10 @@ export class Home extends Component {
       borderRadius: "3px",
       height:"2rem",
 
+    }
+    const spanstyle={
+      color:"#9D9D9D",
+      marginRight:"1rem",
     }
     return (
       
@@ -184,16 +197,16 @@ export class Home extends Component {
 
                       />
                     </Typography>
-                    <h4>작성자 : {post.author}</h4>
-                    <h4>작성일 : {post.created_at}</h4>
+                    <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
+                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{post.created_at}</span></h4>
                     <img src={post.image} alt=""/>
-                    <h2>{post.content}</h2>
+                    <h3 style={{fontWeight:400}}>{post.content}</h3>
 
                   </CardContent>
                   <CardActions>
-                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small" style={buttonstyle2}>삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
-                    <Button value={post.id}><Link className="navButton" to="/update">수정하기</Link></Button>
+                    <Button value={post.id}><Link className="navButton" to="/update" style={buttonstyle2}>수정하기</Link></Button>
                   </CardActions>
                </Card>
               )
