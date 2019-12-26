@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 // npm install react-router-dom
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 // handlingSubmit() 에서 사용
 import api from './api';
@@ -17,6 +17,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
+import Webcam from "react-webcam";
+ 
+const WebcamComponent = () => <Webcam />;
 
 export class Home extends Component {
   
@@ -91,6 +94,7 @@ export class Home extends Component {
     const formstyle={
       background:"rgba(0,80,165,0.1)",
     }
+    
 
     return (
       
@@ -343,6 +347,7 @@ export class Cal extends Component {
     <Calendar
       onChange={this.onChange}
       value={this.state.date}
+      
     />
     </div>
     )
@@ -380,24 +385,52 @@ export default function FadeMenu() {
     </div>
   );
 }
+
+const videoConstraints = {
+  width: 1280,
+  height: 720,
+  facingMode: "user"
+};
+ 
+const WebcamCapture = () => {
+  const webcamRef = React.useRef(null);
+ 
+  const capture = React.useCallback(
+    () => {
+      const imageSrc = webcamRef.current.getScreenshot();
+    },
+    [webcamRef]
+  );
+ 
+  return (
+    <>
+      <Webcam
+        audio={false}
+        height={720}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={1280}
+        videoConstraints={videoConstraints}
+      />
+      <button onClick={capture}>Capture photo</button>
+    </>
+  );
+};
+
+export class WebcamCapture extends Component {
+  render() {
+    const videoConstraints = {
+      facingMode: "user"
+    };
+    return <Webcam videoConstraints={videoConstraints} />;
+  }
+}
+
 export class Third extends Component {
   render() {
     return (
       <div>
-        <Link to={`${this.props.match.url}/1`} style={{ marginRight: '5px' }}>
-          1번
-        </Link>
-        <Link to={`${this.props.match.url}/2`}>2번</Link>
-        <Route
-          exact
-          path={this.props.match.url}
-          render={() => (
-            <div>
-              <h3>id를 선택해 주세요.</h3>
-            </div>
-          )}
-        />
-        <Route path={`${this.props.match.url}/:id`} component={Item} />
+       <h1>내용내용</h1>
       </div>
     )
   }
