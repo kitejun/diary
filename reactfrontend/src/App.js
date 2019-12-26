@@ -115,7 +115,6 @@ class App extends React.Component {
                 (post) =>
                 <Card className={'card'}>
                   <CardContent>
-                    <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 대나무
                     </Typography>
@@ -123,9 +122,10 @@ class App extends React.Component {
                       <PostView
                       key={post.id}
                       title={post.title}
-                      content={post.content}
                       />
                     </Typography>
+                    <img src={post.image} alt=""/>
+                    <h2>{post.content}</h2>
                   </CardContent>
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
