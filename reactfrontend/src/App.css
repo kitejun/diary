@@ -2,7 +2,10 @@ body {
   background-color: rgba(0,80,178,0.2);
   font-family: 배달의민족 주아;
 }
-
+.img{
+  position: relative;
+  
+}
 .App{
   position: relative;
   bottom: 366px;
