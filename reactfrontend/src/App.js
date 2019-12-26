@@ -20,7 +20,7 @@ class App extends React.Component {
     this.state = {
       title: "",
       content: "",
-      // image: "",
+      // image: null,
       results: [],
     }
   }
@@ -39,10 +39,16 @@ class App extends React.Component {
     this.setState({[event.target.name]: event.target.value})    
   }
 
-  handlingDelete = async (id) => {
-    await api.deletePost(id)
-    this.getPosts()
-  }
+  // handlingDelete = async (id) => {
+  //   await api.deletePost(id)
+  //   this.getPosts()
+  // }
+  
+  handleImageChange = (e) => {
+    this.setState({
+      image: e.target.files[0]
+    })
+  };
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -50,12 +56,10 @@ class App extends React.Component {
       {
         title: this.state.title,
         content: this.state.content,
-        image: this.state.image,
       }
     );
     console.log("작성 완료!", result);
-    this.setState({title: '', content: '', image: ''})
-    // this.setState({title: '', content: ''})
+    this.setState({title: '', content: ''})
     this.getPosts()
   }
 
