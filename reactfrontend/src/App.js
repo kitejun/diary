@@ -209,104 +209,6 @@ export class Home extends Component {
   }
 }
 
-// 게시글 수정하기
-export class Update extends Component {
-
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      title: "",
-      content: "",
-      //image: "",
-      author: "",
-      results: [],
-    }
-  }
-
-  render() {
-    const backstyle={
-      background:"white",
-    }
-    
-    const buttonstyle={
-      background:"white",
-    }
-
-    const formstyle={
-      background:"white",
-    }
-
-    const filestyle={
-      background:"white",
-      border: "solid 1px #ccc",
-      borderRadius: "3px",
-      height:"2rem",
-    }
-
-    return (
-      <div className="App">
-        <Container maxWidth="lg">
-          <div className="fixed">
-          <div className="PostingSection">
-            <Paper className="PostingPaper"  style={backstyle}>
-              <h2>오늘의 일기</h2>
-              <form className="PostingForm" onSubmit={this.handlingSubmit}>
-                <TextField
-                  id="outlined-name"
-                  label="글 제목"
-                  name="title"
-                  value={this.state.title}
-                  onChange={this.handlingChange}
-                  margin="normal"
-                  variant="outlined"
-                  style={formstyle}
-                />
-                <TextField
-                  id="outlined-name"
-                  label="name"
-                  name="author"
-                  value={this.state.author}
-                  onChange={this.handlingChange}
-                  margin="normal"
-                  variant="outlined"
-                />
-
-                <input 
-                  type="file" 
-                  name="image"
-                  value={this.state.image}
-                  style={filestyle}
-                  className="filebutton"
-                  onChange={this.handlingChange}></input>
-
-                <TextField
-                  id="outlined-name"
-                  label="본문"
-                  name="content"
-                  multiline
-                  rowsMax="4"
-                  value={this.state.content}
-                  onChange={this.handlingChange}
-                  margin="normal"
-                  variant="outlined"
-                  className="outline-content"
-                  style={formstyle}
-
-                />
-
-                {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
-              </form>
-            </Paper>
-          </div>
-        </div>
-        </Container>
-        </div>
-    )
-  }
-}
-
 export class Login extends Component {
   
   constructor(props){
@@ -387,22 +289,118 @@ export default function FadeMenu() {
   );
 }
 
-export class Third extends Component {
-  render() {
-    return (
-      <div>
-       <h1>내용내용</h1>
-      </div>
-    )
-  }
-}
+// 게시글 수정하기
+export class Update extends Component {
 
-class Item extends Component {
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+      title: "",
+      content: "",
+      author: "",
+      results: [],
+    }
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
+  handlingUpdate = async (event) => {
+    // event.preventDefault() // event의 기본적인 기능을 하지않게 함
+    const id = this.props.match.params.id 
+    let result = await api.updatePost(id, 
+    {
+      title: this.state.title,
+      content: this.state.content,
+      author: this.state.author
+    })
+    console.log("수정 완료!", result);
+    this.setState({title: '', content: '', author: ''})
+    this.getPosts()
+  }
+
   render() {
+    const backstyle={
+      background:"white",
+    }
+    
+    const buttonstyle={
+      background:"white",
+    }
+
+    const formstyle={
+      background:"white",
+    }
+
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+    }  
+    const id = this.props.match.params.id 
     return (
-      <div>
-        <h3>{this.props.match.params.id}</h3>
-      </div>
+      <div className="App">
+        <Container maxWidth="lg">
+          <div className="fixed">
+          <div className="PostingSection">
+            <Paper className="PostingPaper"  style={backstyle}>
+              <h2>{id}</h2>
+              <form className="PostingForm" onSubmit={this.handlingUpdate}>
+                <TextField
+                  id="outlined-name"
+                  label="글 제목"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  style={formstyle}
+                />
+                <TextField
+                  id="outlined-name"
+                  label="name"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
+                <input 
+                  type="file" 
+                  name="image"
+                  value={this.state.image}
+                  style={filestyle}
+                  className="filebutton"
+                  onChange={this.handlingChange}></input>
+
+                <TextField
+                  id="outlined-name"
+                  label="본문"
+                  name="content"
+                  multiline
+                  rowsMax="4"
+                  value={this.state.content}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  className="outline-content"
+                  style={formstyle}
+
+                />
+
+                {/* <br /> */}
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
+                {/* <Button value={id} onClick={(event) => this.handlingUpdate(id)} color="secondary" size="small">수정하기</Button> */}
+              </form>
+            </Paper>
+          </div>
+        </div>
+        </Container>
+        </div>
     )
   }
 }
