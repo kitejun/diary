@@ -78,11 +78,11 @@ export class Home extends Component {
     }
     
     const buttonstyle={
-      background:"white",
+      background:"rgba(0,80,178,0.2)",
     }
 
     const formstyle={
-      background:"white",
+      background:"rgba(0,80,165,0.1)",
     }
 
     const filestyle={
@@ -120,6 +120,7 @@ export class Home extends Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  style={formstyle}
                 />
 
                 {/* <br /> */}
