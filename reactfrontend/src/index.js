@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Home, Login, Cal, Third, Update } from './App.js';
+import { Home, Cal, Update } from './App.js';
 import './index.css';
 import Header from './Header.js';
 import * as serviceworker from './serviceWorker';
@@ -30,18 +30,14 @@ ReactDOM.render(
                             My Diary
                         </Typography>
                         <Button color="inherit"><Link className="navButton" to="/">Home</Link></Button>
-                        <Button color="inherit"><Link className="navButton" to="/login">Login</Link></Button>
                         <Button color="inherit"><Link className="navButton" to="/cal">Calender</Link></Button>
-                        <Button color="inherit"><Link className="navButton" to="/third">Test</Link></Button>
                     </Toolbar>
                 </AppBar>
             </div>
     <div>
       <Header />
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
       <Route path="/cal" component={Cal} />
-      <Route path="/third" component={Third} />
       <Route path="/update/:id" component={Update} />
     </div>
   </Router>,

@@ -218,6 +218,86 @@ export class Home extends Component {
   }
 }
 
+export class Login extends Component {
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      id : '',
+      password : '',
+    }
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name] : event.target.value})
+  }
+  
+  render() {
+    return (
+      <div>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+      </div>
+    )
+  }
+}
+
+export class Cal extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
+  render() {
+    return (
+      <div>
+        <center>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+      
+    />
+    </center>
+    </div>
+    )
+  }
+}
+export default function FadeMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
+        Open with fade transition
+      </Button>
+      <Menu
+        id="fade-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+    </div>
+  );
+}
+
 // 게시글 수정하기
 export class Update extends Component {
 
@@ -258,6 +338,24 @@ export class Update extends Component {
         author: this.state.author,
       }
     );
+    console.log("수정 완료!", result);
+    this.setState({title: '', content: '', author: ''})
+    this.getPosts()
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
+  handlingUpdate = async (event) => {
+    // event.preventDefault() // event의 기본적인 기능을 하지않게 함
+    const id = this.props.match.params.id 
+    let result = await api.updatePost(id, 
+    {
+      title: this.state.title,
+      content: this.state.content,
+      author: this.state.author
+    })
     console.log("수정 완료!", result);
     this.setState({title: '', content: '', author: ''})
     this.getPosts()
@@ -339,113 +437,3 @@ export class Update extends Component {
   }
 }
 
-export class Login extends Component {
-  
-  constructor(props){
-    super(props)
-    this.state = {
-      id : '',
-      password : '',
-    }
-  }
-
-  handlingChange = (event) => {
-    this.setState({[event.target.name] : event.target.value})
-  }
-  // handlingSubmit = () => {
-  //   api.createPost()
-  // }
-  
-  render() {
-    return (
-      <div>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-      </div>
-    )
-  }
-}
-
-export class Cal extends Component {
-  state = {
-    date: new Date(),
-  }
-   
-  onChange = date => this.setState({ date })
-
-  render() {
-    return (
-      <div>
-        <h3>2, 회원가입 페이지</h3>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-      </div>
-    )
-  }
-}
-export default function FadeMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <div>
-      <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
-        Open with fade transition
-      </Button>
-      <Menu
-        id="fade-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
-    </div>
-  );
-}
-export class Third extends Component {
-  render() {
-    return (
-      <div>
-        <Link to={`${this.props.match.url}/1`} style={{ marginRight: '5px' }}>
-          1번
-        </Link>
-        <Link to={`${this.props.match.url}/2`}>2번</Link>
-        <Route
-          exact
-          path={this.props.match.url}
-          render={() => (
-            <div>
-              <h3>id를 선택해 주세요.</h3>
-            </div>
-          )}
-        />
-        <Route path={`${this.props.match.url}/:id`} component={Item} />
-      </div>
-    )
-  }
-}
-
-class Item extends Component {
-  render() {
-    return (
-      <div>
-        <h3>{this.props.match.params.id}</h3>
-      </div>
-    )
-  }
-}
