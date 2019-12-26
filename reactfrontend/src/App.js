@@ -58,14 +58,23 @@ class App extends React.Component {
 
   render() {
     const backstyle={
-      background:"skyblue",
+      background:"rgba(22,201,223,0.3)",
     }
+    
+    const buttonstyle={
+      background:"white",
+    }
+
+    const formstyle={
+      background:"white",
+    }
+
     return (
       <div className="App">
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper" >
+            <Paper className="PostingPaper"  style={backstyle}>
               <h2>대나무 숲 글 작성하기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -76,6 +85,8 @@ class App extends React.Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  style={formstyle}
+
                 />
                 
                 {/* <br /> */}
@@ -97,10 +108,12 @@ class App extends React.Component {
                   margin="normal"
                   variant="outlined"
                   className="outline-content"
+                  style={formstyle}
+
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>제출하기</Button>
               </form>
             </Paper>
           </div>
@@ -110,7 +123,7 @@ class App extends React.Component {
             {
               this.state.results.map(
                 (post) =>
-                <Card className={'card'}>
+                <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
@@ -121,6 +134,8 @@ class App extends React.Component {
                       key={post.id}
                       title={post.title}
                       content={post.content}
+                      style={formstyle}
+
                       />
                     </Typography>
                   </CardContent>

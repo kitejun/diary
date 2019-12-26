@@ -1,11 +1,14 @@
 body {
   background-color: #f5f5f5;
+  font-family: 배달의민족 주아;
 }
 .App{
   margin-top: 5rem;
 
 }
-
+#button{
+  color:white;
+}
 .PostingForm {
   display: flex;
   flex-direction: column;
