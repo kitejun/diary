@@ -75,7 +75,7 @@ export class Home extends Component {
         <Container maxWidth="lg">
           <div className="PostingSection">
             <Paper className="PostingPaper">
-              <h2>대나무 숲 글 작성하기</h2>
+              <h2>일기장</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
                   id="outlined-name"
@@ -126,7 +126,7 @@ export class Home extends Component {
                 <Card className={'card'}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 대나무
+                      {post.id}번째 글
                     </Typography>
                     <Typography variant="h5" component="h2">
                       <PostView
