@@ -79,6 +79,7 @@ export class Home extends Component {
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
       fontWeight:"600",
+      marginTop:"2rem",
     }
     const buttonstyle2={
       fontWeight:"600",
@@ -93,7 +94,13 @@ export class Home extends Component {
       paddingLeft:"3rem",
       paddingTop:"12px",
       paddingBottom:"1rem",
-
+    }
+    const writestyle={
+      fontWeight:"600",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"3rem",
+      paddingBottom:"1rem",
     }
 
     const filestyle={
@@ -114,7 +121,7 @@ export class Home extends Component {
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper"  style={backstyle}>
+            <Paper className="PostingPaper"  style={writestyle}>
               <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
