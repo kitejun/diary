@@ -21,6 +21,9 @@ class Header extends Component {
             <li style={displaynone}>
               <Link to={'/third'}></Link>
             </li>
+            <li style={displaynone}>
+              <Link to={'/update'}></Link>
+            </li>
           </ul>
         </div>
       )
