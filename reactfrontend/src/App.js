@@ -17,7 +17,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
-import format from 'string-format'
 import moment from 'moment/moment.js'
 
 export class Home extends Component {
@@ -27,6 +26,7 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
+      //image: "",
       author: "",
       results: [],
     }
@@ -52,19 +52,13 @@ export class Home extends Component {
   }
 
   // 수정하기
-  // handlingUpdate = async (id) => {
-  //   const _results = await api.getAllPosts()
-  //   this.setState({
-  //     results: _results.data.filter(_results.data.id == id)
-  //   })
-  //   await api.UpdatePost(id)
-  //   this.setState({title: '', content: '', author: ''})
-  //   this.getPosts()
-  // }
-
-  handlingUpdate = async (id, _title, _content) => {
-    await api.updatePost(id, _title, _content)
-    this.setState({title:'', content:''})
+  handlingUpdate = async (id) => {
+    const _results = await api.getAllPosts()
+    this.setState({
+      results: _results.data.filter(_results.data.id == id)
+    })
+    await api.UpdatePost(id)
+    this.setState({title: '', content: '', author: ''})
     this.getPosts()
   }
 
@@ -182,8 +176,17 @@ export class Home extends Component {
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 글  <img src="/images/label2.png" className="img"/>
                       
+                      
+                      
                     </Typography>
-                    
+                    <Typography variant="h5" component="h2">
+                      <PostView
+                      key={post.id}
+                      title={post.title}
+                      style={formstyle}
+                      
+                      />
+                    </Typography>
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
                     <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
                     <img src={post.image} alt=""/>
@@ -193,10 +196,7 @@ export class Home extends Component {
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small" style={buttonstyle2}>삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
-                    <Button href={format('./update/{}',post.id)}>
-                        수정하기
-                    </Button>
-
+                    <Button value={post.id}><Link className="navButton" to="/update" style={buttonstyle2}>수정하기</Link></Button>
                   </CardActions>
                </Card>
               )
@@ -218,39 +218,10 @@ export class Update extends Component {
     this.state = {
       title: "",
       content: "",
+      //image: "",
       author: "",
       results: [],
-      update_results: []
     }
-  }
-//
-componentDidMount() {
-  this.getDetail()
-}
-
-async getDetail(){
-  const _results = await api.getDetail(this.props.match.params.id)
-  console.log(_results)
-  this.setState({update_results:_results.data})
-}
-
-//
-  handlingChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})    
-  }
-  handlingUpdate  = async (event) => {
-    event.preventDefault() // event의 기본적인 기능을 하지않게 함
-    const id = this.props.match.params.id 
-    let result = await api.updatePost(id, 
-      {
-        title: this.state.title,
-        content: this.state.content,
-        author: this.state.author,
-      }
-    );
-    console.log("작성 완료!", result);
-    this.setState({title: '', content: '', author: ''})
-    this.getPosts()
   }
 
   render() {
@@ -271,19 +242,19 @@ async getDetail(){
       border: "solid 1px #ccc",
       borderRadius: "3px",
       height:"2rem",
-    }  
-    const id = this.props.match.params.id 
+    }
+
     return (
       <div className="App">
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
+              <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
-                제목:
                 <TextField
                   id="outlined-name"
-                  label={this.state.update_results["title"]}
+                  label="글 제목"
                   name="title"
                   value={this.state.title}
                   onChange={this.handlingChange}
@@ -291,20 +262,27 @@ async getDetail(){
                   variant="outlined"
                   style={formstyle}
                 />
-                작성자:
                 <TextField
                   id="outlined-name"
-                  label={this.state.update_results["author"]}
+                  label="name"
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
                 />
-                내용:
+
+                <input 
+                  type="file" 
+                  name="image"
+                  value={this.state.image}
+                  style={filestyle}
+                  className="filebutton"
+                  onChange={this.handlingChange}></input>
+
                 <TextField
                   id="outlined-name"
-                  label={this.state.update_results["content"]}
+                  label="본문"
                   name="content"
                   multiline
                   rowsMax="4"
@@ -314,11 +292,11 @@ async getDetail(){
                   variant="outlined"
                   className="outline-content"
                   style={formstyle}
+
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>                {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
-
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
               </form>
             </Paper>
           </div>
