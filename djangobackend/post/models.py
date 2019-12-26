@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
+from django.conf import settings
 
 # Create your models here.
 class Post(models.Model):
@@ -10,8 +11,9 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True) # 수정일
 
     image = models.ImageField(default="default_image.jpg") # 이미지
-    author = models.CharField(max_length=100, default="false") # 작성자
-    
+    #author = models.CharField(max_length=100, default="false") # 작성자
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+   
     def __str__(self):
         return self.title
 '''
