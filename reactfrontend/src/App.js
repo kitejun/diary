@@ -121,6 +121,39 @@ class App extends React.Component {
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
                   </CardActions>
+
+                  <Paper className="CommentingPaper">
+
+
+                  <div className="CommentName">
+                   <h5>댓글 작성하기</h5>
+                   <form className="PostingForm" onSubmit={this.handlingSubmit}>
+                
+                <TextField
+                  id="outlined-name"
+                  label="댓글"
+                  name="comment_content"
+                  multiline
+                  rowsMax="4"
+                  value={this.state.comment_content}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
+                {/* <br /> */}
+                
+                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
+              </form>
+                  </div>
+              
+            </Paper>
+
+
+
+
+
+
                </Card>
               )
             }
