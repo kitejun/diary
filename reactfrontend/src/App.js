@@ -232,18 +232,19 @@ export class Update extends Component {
       update_results: []
     }
   }
-//
-componentDidMount() {
-  this.getDetail()
-}
+  
+  //
+  componentDidMount() {
+    this.getDetail()
+  }
 
-async getDetail(){
-  const _results = await api.getDetail(this.props.match.params.id)
-  console.log(_results)
-  this.setState({update_results:_results.data})
-}
+  async getDetail(){
+    const _results = await api.getDetail(this.props.match.params.id)
+    console.log(_results)
+    this.setState({update_results:_results.data})
+  }
+  //
 
-//
   handlingChange = (event) => {
     this.setState({[event.target.name]: event.target.value})    
   }
@@ -257,7 +258,7 @@ async getDetail(){
         author: this.state.author,
       }
     );
-    console.log("작성 완료!", result);
+    console.log("수정 완료!", result);
     this.setState({title: '', content: '', author: ''})
     this.getPosts()
   }
