@@ -13,13 +13,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
@@ -85,13 +78,6 @@ export class Home extends Component {
       background:"rgba(0,80,165,0.1)",
     }
 
-    const filestyle={
-      background:"white",
-      border: "solid 1px #ccc",
-      borderRadius: "3px",
-      height:"2rem",
-
-    }
     return (
       
       <div className="App">
@@ -171,13 +157,13 @@ export class Home extends Component {
                       />
                     </Typography>
                     <h4>작성자 : {post.author}</h4>
+                    
                     <h4>작성일 : {post.created_at}</h4>
-                    <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
 
                   </CardContent>
                   <CardActions>
-                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    <Button value={post.id} onClick={() => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
                   </CardActions>
                </Card>
               )
