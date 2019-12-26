@@ -18,6 +18,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
 import format from 'string-format'
+import moment from 'moment/moment.js'
 
 export class Home extends Component {
   
@@ -86,6 +87,7 @@ export class Home extends Component {
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
       fontWeight:"600",
+      marginTop:"2rem",
     }
     const buttonstyle2={
       fontWeight:"600",
@@ -100,7 +102,13 @@ export class Home extends Component {
       paddingLeft:"3rem",
       paddingTop:"12px",
       paddingBottom:"1rem",
-
+    }
+    const writestyle={
+      fontWeight:"600",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"3rem",
+      paddingBottom:"1rem",
     }
 
     const filestyle={
@@ -121,7 +129,7 @@ export class Home extends Component {
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper"  style={backstyle}>
+            <Paper className="PostingPaper"  style={writestyle}>
               <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -195,7 +203,7 @@ export class Home extends Component {
                       />
                     </Typography>
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
-                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{post.created_at}</span></h4>
+                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
                     <img src={post.image} alt=""/>
                     <h3 style={{fontWeight:400}}>{post.content}</h3>
 

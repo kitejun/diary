@@ -28,7 +28,8 @@ body {
 
 .PostingPaper{
   margin-right: 1rem;
-  padding: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 .PostingPaper h2{
   text-align: center;
@@ -61,6 +62,7 @@ body {
 }
 .outline-content div{
   height: 12rem;
+  
 }
 /* .filebutton input{
   height: 10rem;
