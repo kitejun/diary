@@ -1,0 +1,57 @@
+body{
+   
+}
+
+.App{
+    margin: auto;
+    height: 100rem;
+}
+.item{
+    padding-top: 3rem;
+    text-align: center;
+    background-color: #fff;
+    height: 30rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item h2{
+    font-weight: 50;
+}
+
+.comment{
+    text-align: center;
+    background-color: rgb(174, 167, 167);
+    height: auto;
+    padding-top: 3rem;
+}
+
+.comment-write{
+    background-color: aquamarine;
+    width: 80%;
+    height: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-view{
+    background-color: blueviolet;
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-image{
+    width: 45%;
+    background-color: blue;
+    height: 22rem;
+    float: left;
+}
+.item-detail{
+    width: 45%;
+    background-color: red;
+    height: 22rem;
+    float: left;
+    margin-left: 5rem;
+}

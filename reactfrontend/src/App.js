@@ -1,25 +1,29 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './detail.css';
+import Container from '@material-ui/core/Container';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          3팀 시작!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="item">
+      <h2>GOODS</h2>
+      <div className="item-image">
+
+      </div>
+      <div className="item-detail">
+
+      </div>
     </div>
+    <div className="comment">
+        <div className="comment-write">
+
+        </div>
+        <div className="comment-view">
+
+        </div>
+    </div>
+  </div>
   );
 }
 
