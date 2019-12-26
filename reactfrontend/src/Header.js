@@ -13,7 +13,7 @@ class Header extends Component {
               <Link to={'/'}></Link>
             </li>
             <li style={displaynone}>
-              <Link to={'/calender'}></Link>
+              <Link to={'/Cal'}></Link>
             </li>
             <li style={displaynone}>
               <Link to={'/update'}></Link>
