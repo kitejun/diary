@@ -16,9 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
-import Calendar from 'react-calendar';
 import moment from 'moment/moment.js'
-// npm install moment --save
 
 export class Home extends Component {
   
@@ -87,18 +85,44 @@ export class Home extends Component {
   }
 
   render() {
-    const backstyle={
-      background:"white",
-    }
-    
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
+      fontWeight:"600",
+      marginTop:"2rem",
     }
-
+    const buttonstyle2={
+      fontWeight:"600",
+      textDecoration:"none",
+    }
     const formstyle={
       background:"rgba(0,80,165,0.1)",
     }
+    const backstyle={
+      background:"white",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"12px",
+      paddingBottom:"1rem",
+    }
+    const writestyle={
+      fontWeight:"600",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"3rem",
+      paddingBottom:"1rem",
+    }
 
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+
+    }
+    const spanstyle={
+      color:"#9D9D9D",
+      marginRight:"1rem",
+    }
     return (
       
       <div className="App">
@@ -106,7 +130,7 @@ export class Home extends Component {
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper"  style={backstyle}>
+            <Paper className="PostingPaper"  style={writestyle}>
               <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -166,26 +190,29 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글
+                      {post.id}번째 글  <img src="/images/label2.png" className="img"/>
+                      
+                      
+                      
                     </Typography>
                     <Typography variant="h5" component="h2">
                       <PostView
                       key={post.id}
                       title={post.title}
                       style={formstyle}
-
+                      
                       />
                     </Typography>
-                    <h4>작성자 : {post.author}</h4>
-                    
-                    <h4>작성일 : {moment(post.created_at).format('LLL')}</h4>
-                    <h2>{post.content}</h2>
+                    <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
+                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
+                    <img src={post.image} alt=""/>
+                    <h3 style={{fontWeight:400}}>{post.content}</h3>
 
                   </CardContent>
                   <CardActions>
-                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small" style={buttonstyle2}>삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
-                    <Button value={post.id}><Link className="navButton" to="/update">수정하기</Link></Button>
+                    <Button value={post.id}><Link className="navButton" to="/update" style={buttonstyle2}>수정하기</Link></Button>
                   </CardActions>
                   <Card>
                     <cCardContent>
@@ -203,7 +230,6 @@ export class Home extends Component {
         </Container>
       </div>
     )
-  
   }
 }
 
@@ -326,18 +352,16 @@ export class Login extends Component {
   render() {
     return (
       <div>
-
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
-        <h1>asdasd</h1>
-
       </div>
     )
   }
 }
-export class Signup extends Component {
+
+export class Cal extends Component {
   state = {
     date: new Date(),
   }
@@ -347,14 +371,10 @@ export class Signup extends Component {
   render() {
     return (
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-    <Calendar
-      onChange={this.onChange}
-      value={this.state.date}
-    />
-    </div>
+        <h3>2, 회원가입 페이지</h3>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+      </div>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Home, Login, Signup, Third, Update } from './App.js';
+import { Home, Login, Cal, Third } from './App.js';
 import './index.css';
 import Header from './Header.js';
 import * as serviceworker from './serviceWorker';
@@ -31,7 +31,7 @@ ReactDOM.render(
                         </Typography>
                         <Button color="inherit"><Link className="navButton" to="/">Home</Link></Button>
                         <Button color="inherit"><Link className="navButton" to="/login">Login</Link></Button>
-                        <Button color="inherit"><Link className="navButton" to="/signup">SignUp</Link></Button>
+                        <Button color="inherit"><Link className="navButton" to="/cal">Calender</Link></Button>
                         <Button color="inherit"><Link className="navButton" to="/third">Test</Link></Button>
                     </Toolbar>
                 </AppBar>
@@ -40,9 +40,9 @@ ReactDOM.render(
       <Header />
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
+      <Route path="/cal" component={Cal} />
       <Route path="/third" component={Third} />
-      <Route path="/update" component={Update} />
+      {/* <Route path="/update" component={Update} /> */}
     </div>
   </Router>,
   document.getElementById('root')
