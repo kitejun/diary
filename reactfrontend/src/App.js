@@ -13,13 +13,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
@@ -66,12 +59,6 @@ export class Home extends Component {
     this.setState({title: '', content: '', author: ''})
     this.getPosts()
   }
-
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -187,14 +174,17 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글<img src="/images/label2.png" className="img"/>
+                      {post.id}번째 글  <div class="date">{post.created_at }</div> <img src="/images/label2.png" className="img"/>
+                      
+                      
+                      
                     </Typography>
                     <Typography variant="h5" component="h2">
                       <PostView
                       key={post.id}
                       title={post.title}
                       style={formstyle}
-
+                      
                       />
                     </Typography>
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
@@ -345,7 +335,14 @@ export class Login extends Component {
     )
   }
 }
-export class Signup extends Component {
+
+export class Cal extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>

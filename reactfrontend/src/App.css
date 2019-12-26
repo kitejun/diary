@@ -1,6 +1,6 @@
 body {
   background-color: rgba(0,80,178,0.2);
-  font-family: 배달의민족 주아;
+ 
 }
 .img{
   position: relative;
@@ -8,6 +8,7 @@ body {
   bottom: 28px;
 }
 .App{
+  font-family: 배달의민족 주아;
   position: relative;
   bottom: 366px;
   margin-top: 7rem;
@@ -15,6 +16,9 @@ body {
 }
 #button{
   color:white;
+}
+.date{
+  float:right;
 }
 .PostingForm {
   display: flex;
