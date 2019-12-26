@@ -112,7 +112,6 @@ class App extends React.Component {
                 (post) =>
                 <Card className={'card'}>
                   <CardContent>
-                    <img src={post.image} alt="My Image"/>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 대나무
                     </Typography>
