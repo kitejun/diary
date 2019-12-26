@@ -12,6 +12,7 @@ body {
 .PostingForm {
   display: flex;
   flex-direction: column;
+  
 }
 
 .PostingPaper{
