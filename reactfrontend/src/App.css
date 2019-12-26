@@ -3,7 +3,7 @@ body {
   font-family: 배달의민족 주아;
 }
 .App{
-  margin-top: 5rem;
+  margin-top: 7rem;
 
 }
 #button{
@@ -47,7 +47,11 @@ body {
 .outline-content div{
   height: 12rem;
 }
-
+.filebutton input{
+  height: 10rem;
+  width: 10rem;
+  background-color: cadetblue;
+}
 @media screen and (max-width: 1000px)  {
   .PostingSection{
     float: none;

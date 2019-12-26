@@ -14,9 +14,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Header from './Header.js'
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
 
 export class Home extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -67,7 +70,7 @@ export class Home extends Component {
 
   render() {
     const backstyle={
-      background:"rgba(22,201,223,0.3)",
+      background:"skyblue",
     }
     
     const buttonstyle={
@@ -78,6 +81,13 @@ export class Home extends Component {
       background:"white",
     }
 
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+
+    }
     return (
 
       <div className="App">
@@ -102,8 +112,10 @@ export class Home extends Component {
                   type="file" 
                   name="image"
                   value={this.state.image}
+                  style={filestyle}
+                  className="filebutton"
                   onChange={this.handlingChange}></input>
-                
+                  
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -190,7 +202,38 @@ export class Signup extends Component {
     )
   }
 }
+export default function FadeMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
+        Open with fade transition
+      </Button>
+      <Menu
+        id="fade-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+    </div>
+  );
+}
 export class Third extends Component {
   render() {
     return (

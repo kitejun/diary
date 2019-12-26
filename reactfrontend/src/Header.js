@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom'
 
 class Header extends Component {
     render() {
+      const displaynone={
+        display:"none",
+      }
       return (
         <div>
-          <ul>
+          <ul style={displaynone}>
             <li>
-              <Link to={'/'}>홈</Link>
+              <Link to={'/'} >홈</Link>
             </li>
             <li>
               <Link to={'/login'}>로그인</Link>
