@@ -61,12 +61,6 @@ export class Home extends Component {
     this.getPosts()
   }
 
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
-
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
     let result = await api.createPost(
