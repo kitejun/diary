@@ -7,10 +7,10 @@ body{
     height: 100rem;
 }
 .item{
-    padding-top: 3rem;
+    padding-top: 5rem;
     text-align: center;
     background-color: #fff;
-    height: 30rem;
+    height: 35rem;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -27,7 +27,7 @@ body{
 }
 
 .comment-write{
-    background-color: aquamarine;
+    border: #ccc solid 2px;
     width: 80%;
     height: 10rem;
     margin-left: auto;
@@ -44,14 +44,16 @@ body{
 
 .item-image{
     width: 45%;
-    background-color: blue;
+    border: #ccc solid 2px;
     height: 22rem;
     float: left;
+    margin-top: 5rem;
 }
 .item-detail{
     width: 45%;
-    background-color: red;
+    border: #ccc solid 2px;
     height: 22rem;
-    float: left;
-    margin-left: 5rem;
+    float: right;
+    margin-left: 1%;
+    margin-top: 5rem;
 }
