@@ -31,7 +31,8 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
-      // image: null,
+      //image: "",
+      author: "",
       results: [],
     }
   }
@@ -113,7 +114,16 @@ export class Home extends Component {
                   variant="outlined"
                   style={formstyle}
                 />
-                
+                <TextField
+                  id="outlined-name"
+                  label="작성자 아이디"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
                 <input 
                   type="file" 
                   name="image"
