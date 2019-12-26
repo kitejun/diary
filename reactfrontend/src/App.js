@@ -98,8 +98,9 @@ export class Home extends Component {
 
     }
     return (
-
+      
       <div className="App">
+        
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
@@ -195,7 +196,6 @@ export class Home extends Component {
           </div>
         </Container>
       </div>
-      
     )
   }
 }
