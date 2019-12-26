@@ -22,7 +22,7 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
-      // image: "",
+      //image: "",
       author: "",
       results: [],
     }
