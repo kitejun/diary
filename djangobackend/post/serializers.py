@@ -7,4 +7,4 @@ class PostSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = models.Post
-        fields = ('id', 'title', 'content', 'author', 'image')   
+        fields = ('id', 'title', 'image', 'content', 'author')   
