@@ -149,8 +149,8 @@ export class Home extends Component {
               </form>
             </Paper>
           </div>
-</div>
-<div className="none-fixed">
+        </div>
+        <div className="none-fixed">
           <div className="ViewSection">
             {
               this.state.results.map(
@@ -169,7 +169,7 @@ export class Home extends Component {
                       />
                     </Typography>
                     <h4>작성자 : {post.author}</h4>
-                    <h4>날짜 : {post.created_at}</h4>
+                    <h4>작성일 : {post.created_at}</h4>
                     <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
 
