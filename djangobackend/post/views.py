@@ -14,6 +14,9 @@ class PostViewset(viewsets.ModelViewSet):
     filter_backends = [SearchFilter]
     search_fields = ('title', 'content')
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
     def get_queryset(self):
 
         qs = super().get_queryset()
