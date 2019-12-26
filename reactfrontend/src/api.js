@@ -9,6 +9,12 @@ export default{
     getAllPosts(){
         return axios.get('/posts/')
     },
+
+    // 하나의 글 불러오기
+    getPost(id){
+        return axios.get('/posts/' + String(id))
+    },
+
     // 글 작성하기
     createPost(data){
         return axios.post('/posts/', data)
@@ -17,5 +23,8 @@ export default{
     deletePost(id) {
         return axios.delete('/posts/' + String(id))
     },
-    
+
+    updatePost(id) {
+        return axios.patch('/posts/' + String(id))
+    },   
 }
