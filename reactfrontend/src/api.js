@@ -24,7 +24,10 @@ export default{
         return axios.delete('/posts/' + String(id))
     },
 
-    updatePost(id) {
-        return axios.patch('/posts/' + String(id))
-    },   
+    updatePost(id, data) {
+        return axios.put('/posts/' + String(id), data)
+    }, 
+    getDetail(id){
+        return axios.get('/posts/'+String(id))
+    },
 }
