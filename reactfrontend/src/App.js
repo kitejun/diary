@@ -31,7 +31,7 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
-      // image: "",
+      //image: "",
       author: "",
       results: [],
     }
@@ -79,7 +79,7 @@ export class Home extends Component {
 
   render() {
     const backstyle={
-      background:"skyblue",
+      background:"white",
     }
     
     const buttonstyle={
@@ -104,7 +104,7 @@ export class Home extends Component {
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <h2>일기장</h2>
+              <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
                   id="outlined-name"
@@ -116,7 +116,16 @@ export class Home extends Component {
                   variant="outlined"
                   style={formstyle}
                 />
-                
+                <TextField
+                  id="outlined-name"
+                  label="작성자 아이디"
+                  name="author"
+                  value={this.state.author}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+
                 <input 
                   type="file" 
                   name="image"
@@ -168,7 +177,6 @@ export class Home extends Component {
                       <PostView
                       key={post.id}
                       title={post.title}
-                      content={post.content}
                       style={formstyle}
 
                       />
@@ -212,8 +220,12 @@ export class Login extends Component {
   
   render() {
     return (
-     <div>회원가입</div>
-  
+      <div>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+      </div>
     )
   }
 }
@@ -223,6 +235,8 @@ export class Signup extends Component {
     return (
       <div>
         <h3>2, 회원가입 페이지</h3>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }

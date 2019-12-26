@@ -9,12 +9,13 @@ const dummy_prop = {
 */
 export default class PostView extends Component {
     render() {
-        const {id, title, content} = this.props
+        const {id, title, content, author} = this.props
         return (
             <div>
                 {id}
                 <h3>{title}</h3>
                 <p>{content}</p>
+                <p>{author}</p>
             </div>
         )
     }
