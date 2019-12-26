@@ -178,8 +178,8 @@ export class Home extends Component {
                     
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
                     <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
-                    <img src={post.image} alt=""/>
-                    <h3 style={{fontWeight:400, textOverflow:"clip",}}>{post.content}</h3>
+                    {/* <img src={post.image} alt=""/> */}
+                    <h3 style={{fontWeight:400}}>{post.content}</h3>
 
                   </CardContent>
                   <CardActions>
@@ -188,7 +188,6 @@ export class Home extends Component {
                     <Button href={format('./update/{}',post.id)}>
                         수정하기
                     </Button>
-  
                   </CardActions>
                </Card>
               )
@@ -198,6 +197,7 @@ export class Home extends Component {
         </Container>
       </div>
     )
+  
   }
 }
 
@@ -216,7 +216,7 @@ export class Update extends Component {
       update_results: []
     }
   }
-//
+
 componentDidMount() {
   this.getDetail()
 }
@@ -231,43 +231,6 @@ async getDetail(){
   handlingChange = (event) => {
     this.setState({[event.target.name]: event.target.value})    
   }
-  handlingUpdate  = async (event) => {
-    event.preventDefault() // event의 기본적인 기능을 하지않게 함
-    const id = this.props.match.params.id 
-    let result = await api.updatePost(id, 
-      {
-        title: this.state.title,
-        content: this.state.content,
-        author: this.state.author,
-      }
-    );
-    console.log("작성 완료!", result);
-    this.setState({title: '', content: '', author: ''})
-    this.getPosts()
-  }
-
-  handlingChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})    
-  }
-
-  handlingUpdate = async (event) => {
-    // event.preventDefault() // event의 기본적인 기능을 하지않게 함
-    const id = this.props.match.params.id 
-    let result = await api.updatePost(id, 
-    {
-      title: this.state.title,
-      content: this.state.content,
-      author: this.state.author
-    })
-    console.log("수정 완료!", result);
-    this.setState({title: '', content: '', author: ''})
-    this.getPosts()
-  }
-
-  handlingChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})    
-  }
-
   handlingUpdate = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
     const id = this.props.match.params.id 
@@ -282,9 +245,14 @@ async getDetail(){
     this.setState({title: '', content: '', author: ''})
   }
 
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
   render() {
     const backstyle={
       background:"white",
+      paddingTop:"3rem"
     }
     
     const buttonstyle={
@@ -307,7 +275,8 @@ async getDetail(){
         <Container maxWidth="sm">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <form className="PostingForm" onSubmit={this.handlingSubmit}>
+            <h2 style={{fontWeight:"400",textAlign:"center"}}>UPDATE</h2>
+              <form className="PostingForm" onSubmit={this.handlingUpdate}>
                 제목:
                 <TextField
                   id="outlined-name"
@@ -345,8 +314,8 @@ async getDetail(){
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
-                {/* <Button value={id} onClick={(event) => this.handlingUpdate(id)} color="secondary" size="small">수정하기</Button> */}
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>                {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
+
               </form>
             </Paper>
           </div>
