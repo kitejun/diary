@@ -1,12 +1,14 @@
 body {
   background-color: rgba(0,80,178,0.2);
-  font-family: 배달의민족 주아;
+ 
 }
 .img{
   position: relative;
-  
+  float: right;
+  bottom: 28px;
 }
 .App{
+  font-family: 배달의민족 주아;
   position: relative;
   bottom: 366px;
   margin-top: 7rem;
@@ -14,6 +16,9 @@ body {
 }
 #button{
   color:white;
+}
+.date{
+  float:right;
 }
 .PostingForm {
   display: flex;
@@ -38,7 +43,8 @@ body {
 }
 
 .PostingSection{
-  float: left;
+  float: right;
+  margin-right: 4rem;
   width:80%;
   height: 50rem;
 }
@@ -56,11 +62,11 @@ body {
 .outline-content div{
   height: 12rem;
 }
-.filebutton input{
+/* .filebutton input{
   height: 10rem;
   width: 10rem;
   background-color: cadetblue;
-}
+} */
 @media screen and (max-width: 1000px)  {
   .PostingSection{
     float: none;
