@@ -177,7 +177,6 @@ export class Home extends Component {
                       <PostView
                       key={post.id}
                       title={post.title}
-                      content={post.content}
                       style={formstyle}
 
                       />
