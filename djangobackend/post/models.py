@@ -1,20 +1,21 @@
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
+from django.conf import settings
 
 # Create your models here.
 class Post(models.Model):
-    title = models.CharField(max_length=500, default="hi")  # 물품 이름 (게시글 제목)
-    content = models.TextField(blank=True) # 설명 
+    title = models.CharField(max_length=500, default="hi")  # 제목
+    content = models.TextField(blank=True) # 내용
     created_at = models.DateTimeField(auto_now_add=True) # 등록일
     updated_at = models.DateTimeField(auto_now=True) # 수정일
 
-    image = models.ImageField(default="default_image.jpg") # 물품 이미지
-    price = models.IntegerField(default=1000) # 가격
-    sell_user = models.IntegerField(default=1) # 판매자 
-    buy_user = models.IntegerField(default=1) # 구매자
-    is_sold = models.CharField(max_length=100, default="false") # 판매여부
-
+    image = models.ImageField(default="default_image.jpg") # 이미지
+    #author = models.CharField(max_length=100, default="false") # 작성자
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+   
+    def __str__(self):
+        return self.title
 '''
 class Review(models.Model):
     post_id = models.IntegerField(default=1) # 물품 번호(FK)
@@ -22,6 +23,7 @@ class Review(models.Model):
     created_at = models.DateField(default=timezone.now) # 등록일
     buy_user = models.IntegerField(default=1) # 구매자
 '''
+<<<<<<< HEAD
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE, null=True, related_name='comments')
@@ -33,3 +35,5 @@ class Comment(models.Model):
     
     class Meta:
         ordering=['-id']
+=======
+>>>>>>> master

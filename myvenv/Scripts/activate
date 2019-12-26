@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="C:\Github\tobe\myvenv"
+=======
+VIRTUAL_ENV="C:\Users\zxd98\Documents\GitHub\tobe\myvenv"
+>>>>>>> master
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

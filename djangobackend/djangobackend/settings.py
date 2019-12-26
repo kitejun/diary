@@ -37,10 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'post',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+
+    # 'rest_auth', 
+    # 'rest_framework.authtoken',
+    # 'rest_auth.registration',
+    # 'allauth',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1 # 추가함
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -122,6 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
