@@ -76,10 +76,13 @@ export class Home extends Component {
   render() {
     const backstyle={
       background:"white",
+      
+      
     }
     
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
+      
     }
 
     const formstyle={
@@ -161,20 +164,25 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글
+                      {post.id}번째 글  <div class="date">{post.created_at }</div> 
+                      
+                      
+                      
                     </Typography>
                     <Typography variant="h5" component="h2">
                       <PostView
                       key={post.id}
                       title={post.title}
                       style={formstyle}
-
+                      
                       />
                     </Typography>
-                    <h4>작성자 : {post.author}</h4>
-                    <h4>작성일 : {post.created_at}</h4>
-                    <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
+                    <div class="date">{post.author}</div>
+                    <h4></h4>
+                    
+                    
+                   
 
                   </CardContent>
                   <CardActions>
@@ -225,7 +233,7 @@ export class Login extends Component {
   }
 }
 
-export class Signup extends Component {
+export class Cal extends Component {
   state = {
     date: new Date(),
   }
