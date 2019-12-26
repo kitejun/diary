@@ -22,7 +22,6 @@ class Header extends Component {
               <Link to={'/third'}></Link>
             </li>
           </ul>
-          </nav>
         </div>
       )
     }
