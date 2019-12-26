@@ -51,22 +51,6 @@ export class Home extends Component {
     this.getPosts()
   }
 
-  // 수정하기
-  // handlingUpdate = async (id) => {
-  //   const _results = await api.getAllPosts()
-  //   this.setState({
-  //     results: _results.data.filter(_results.data.id == id)
-  //   })
-  //   await api.UpdatePost(id)
-  //   this.setState({title: '', content: '', author: ''})
-  //   this.getPosts()
-  // }
-
-  handlingUpdate = async (id, _title, _content) => {
-    await api.updatePost(id, _title, _content)
-    this.setState({title:'', content:''})
-    this.getPosts()
-  }
 
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
@@ -205,7 +189,7 @@ export class Home extends Component {
                     <Button href={format('./update/{}',post.id)}>
                         수정하기
                     </Button>
-
+  
                   </CardActions>
                </Card>
               )
@@ -361,6 +345,24 @@ export class Update extends Component {
     this.getPosts()
   }
 
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
+  handlingUpdate = async (event) => {
+    event.preventDefault() // event의 기본적인 기능을 하지않게 함
+    const id = this.props.match.params.id 
+    console.log(this.state.title)
+    let result = await api.updatePost(id, 
+    {
+      title: this.state.title,
+      content: this.state.content,
+      author: this.state.author,
+    })
+    console.log("수정 완료!", result);
+    this.setState({title: '', content: '', author: ''})
+  }
+
   render() {
     const backstyle={
       background:"white",
@@ -425,8 +427,8 @@ export class Update extends Component {
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>                {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
-
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
+                {/* <Button value={id} onClick={(event) => this.handlingUpdate(id)} color="secondary" size="small">수정하기</Button> */}
               </form>
             </Paper>
           </div>
