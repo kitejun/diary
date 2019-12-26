@@ -3,20 +3,23 @@ import { Link } from 'react-router-dom'
 
 class Header extends Component {
     render() {
+      const displaynone={
+        display:"none",
+      }
       return (
         <div>
           <ul>
-            <li>
-              <Link to={'/'}>홈</Link>
+            <li style={displaynone}>
+              <Link to={'/'}></Link>
             </li>
-            <li>
-              <Link to={'/login'}>로그인</Link>
+            <li style={displaynone}>
+              <Link to={'/login'}></Link>
             </li>
-            <li>
-              <Link to={'/signup'}>회원가입</Link>
+            <li style={displaynone}>
+              <Link to={'/signup'}></Link>
             </li>
-            <li>
-              <Link to={'/third'}>테스트</Link>
+            <li style={displaynone}>
+              <Link to={'/third'}></Link>
             </li>
           </ul>
         </div>

@@ -13,10 +13,19 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from './Header.js'
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
 
 export class Home extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -69,12 +78,32 @@ export class Home extends Component {
   }
 
   render() {
+    const backstyle={
+      background:"skyblue",
+    }
+    
+    const buttonstyle={
+      background:"white",
+    }
+
+    const formstyle={
+      background:"white",
+    }
+
+    const filestyle={
+      background:"white",
+      border: "solid 1px #ccc",
+      borderRadius: "3px",
+      height:"2rem",
+
+    }
     return (
 
       <div className="App">
         <Container maxWidth="lg">
+          <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper">
+            <Paper className="PostingPaper"  style={backstyle}>
               <h2>일기장</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -85,6 +114,7 @@ export class Home extends Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  style={formstyle}
                 />
                 <TextField
                   id="outlined-name"
@@ -100,8 +130,10 @@ export class Home extends Component {
                   type="file" 
                   name="image"
                   value={this.state.image}
+                  style={filestyle}
+                  className="filebutton"
                   onChange={this.handlingChange}></input>
-
+                  
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -120,19 +152,23 @@ export class Home extends Component {
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  className="outline-content"
+                  style={formstyle}
+
                 />
 
                 {/* <br /> */}
-                
-                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>제출하기</Button>
               </form>
             </Paper>
           </div>
+</div>
+<div className="none-fixed">
           <div className="ViewSection">
             {
               this.state.results.map(
                 (post) =>
-                <Card className={'card'}>
+                <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
                       {post.id}번째 글
@@ -141,6 +177,9 @@ export class Home extends Component {
                       <PostView
                       key={post.id}
                       title={post.title}
+                      content={post.content}
+                      style={formstyle}
+
                       />
                     </Typography>
                     <img src={post.image} alt=""/>
@@ -154,8 +193,10 @@ export class Home extends Component {
               )
             }
           </div>
+          </div>
         </Container>
       </div>
+      
     )
   }
 }
@@ -182,6 +223,9 @@ export class Login extends Component {
     return (
       <div>
         <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }
@@ -192,11 +236,44 @@ export class Signup extends Component {
     return (
       <div>
         <h3>2, 회원가입 페이지</h3>
+        <h2>1, 로그인 페이지</h2>
+        <h2>1, 로그인 페이지</h2>
       </div>
     )
   }
 }
+export default function FadeMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
+        Open with fade transition
+      </Button>
+      <Menu
+        id="fade-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+    </div>
+  );
+}
 export class Third extends Component {
   render() {
     return (
