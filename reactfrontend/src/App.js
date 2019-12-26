@@ -23,6 +23,7 @@ import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
+import Calendar from 'react-calendar';
 
 export class Home extends Component {
   
@@ -94,11 +95,11 @@ export class Home extends Component {
     }
     
     const buttonstyle={
-      background:"white",
+      background:"rgba(0,80,178,0.2)",
     }
 
     const formstyle={
-      background:"white",
+      background:"rgba(0,80,165,0.1)",
     }
 
     const filestyle={
@@ -109,8 +110,9 @@ export class Home extends Component {
 
     }
     return (
-
+      
       <div className="App">
+        
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
@@ -129,22 +131,15 @@ export class Home extends Component {
                 />
                 <TextField
                   id="outlined-name"
-                  label="name"
+                  label="닉네임"
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
+                  style={formstyle}
                 />
 
-                <input 
-                  type="file" 
-                  name="image"
-                  value={this.state.image}
-                  style={filestyle}
-                  className="filebutton"
-                  onChange={this.handlingChange}></input>
-                  
                 {/* <br /> */}
 
                 {/* <textarea 
@@ -168,12 +163,12 @@ export class Home extends Component {
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>제출하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>저장하기</Button>
               </form>
             </Paper>
           </div>
-</div>
-<div className="none-fixed">
+        </div>
+        <div className="none-fixed">
           <div className="ViewSection">
             {
               this.state.results.map(
@@ -192,8 +187,10 @@ export class Home extends Component {
                       />
                     </Typography>
                     <h4>작성자 : {post.author}</h4>
+                    <h4>작성일 : {post.created_at}</h4>
                     <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
+
                   </CardContent>
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
@@ -207,8 +204,8 @@ export class Home extends Component {
           </div>
         </Container>
       </div>
-      
     )
+  
   }
 }
 
@@ -330,22 +327,35 @@ export class Login extends Component {
   render() {
     return (
       <div>
+
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
+        <h1>asdasd</h1>
+
       </div>
     )
   }
 }
 export class Signup extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>
-        <h3>2, 회원가입 페이지</h3>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-      </div>
+        <br></br>
+        <br></br>
+        <br></br>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+    />
+    </div>
     )
   }
 }
