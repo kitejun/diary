@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
+import moment from 'moment/moment.js'
 
 export class Home extends Component {
   
@@ -195,7 +196,7 @@ export class Home extends Component {
                       />
                     </Typography>
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
-                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{post.created_at}</span></h4>
+                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
                     <img src={post.image} alt=""/>
                     <h3 style={{fontWeight:400}}>{post.content}</h3>
 
