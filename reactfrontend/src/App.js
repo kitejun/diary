@@ -118,7 +118,7 @@ export class Home extends Component {
                 />
                 <TextField
                   id="outlined-name"
-                  label="name"
+                  label="닉네임"
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
@@ -158,7 +158,7 @@ export class Home extends Component {
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>제출하기</Button>
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>저장하기</Button>
               </form>
             </Paper>
           </div>
