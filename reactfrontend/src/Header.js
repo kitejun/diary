@@ -13,13 +13,7 @@ class Header extends Component {
               <Link to={'/'}></Link>
             </li>
             <li style={displaynone}>
-              <Link to={'/login'}></Link>
-            </li>
-            <li style={displaynone}>
-              <Link to={'/signup'}></Link>
-            </li>
-            <li style={displaynone}>
-              <Link to={'/third'}></Link>
+              <Link to={'/Cal'}></Link>
             </li>
             <li style={displaynone}>
               <Link to={'/update'}></Link>

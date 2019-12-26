@@ -19,6 +19,9 @@ export default{
     },
 
     updatePost(id, data) {
-        return axios.patch('/posts/' + String(id) + '/', data)
-    },   
+        return axios.put('/posts/' + String(id) + '/', data)
+    }, 
+    getDetail(id){
+        return axios.get('/posts/'+String(id))
+    },
 }

@@ -13,18 +13,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Calendar from 'react-calendar';
 import format from 'string-format'
+import moment from 'moment/moment.js'
 
 export class Home extends Component {
   
@@ -33,7 +27,6 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
-      //image: "",
       author: "",
       results: [],
     }
@@ -58,12 +51,6 @@ export class Home extends Component {
     this.getPosts()
   }
 
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
-
   handlingSubmit = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
     let result = await api.createPost(
@@ -80,16 +67,31 @@ export class Home extends Component {
   }
 
   render() {
-    const backstyle={
-      background:"white",
-    }
-    
     const buttonstyle={
       background:"rgba(0,80,178,0.2)",
+      fontWeight:"600",
+      marginTop:"2rem",
     }
-
+    const buttonstyle2={
+      fontWeight:"600",
+      textDecoration:"none",
+    }
     const formstyle={
       background:"rgba(0,80,165,0.1)",
+    }
+    const backstyle={
+      background:"white",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"12px",
+      paddingBottom:"1rem",
+    }
+    const writestyle={
+      fontWeight:"600",
+      paddingRight:"3rem",
+      paddingLeft:"3rem",
+      paddingTop:"3rem",
+      paddingBottom:"1rem",
     }
 
     const filestyle={
@@ -99,6 +101,10 @@ export class Home extends Component {
       height:"2rem",
 
     }
+    const spanstyle={
+      color:"#9D9D9D",
+      marginRight:"1rem",
+    }
     return (
       
       <div className="App">
@@ -106,7 +112,7 @@ export class Home extends Component {
         <Container maxWidth="lg">
           <div className="fixed">
           <div className="PostingSection">
-            <Paper className="PostingPaper"  style={backstyle}>
+            <Paper className="PostingPaper"  style={writestyle}>
               <h2>오늘의 일기</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
                 <TextField
@@ -166,29 +172,22 @@ export class Home extends Component {
                 <Card className={'card'}  style={backstyle}>
                   <CardContent>
                     <Typography className={'card-title'} color="textSecondary" gutterBottom>
-                      {post.id}번째 글
+                      {post.id}번째 글  <img src="/images/label2.png" className="img"/>
+                      
                     </Typography>
-                    <Typography variant="h5" component="h2">
-                      <PostView
-                      key={post.id}
-                      title={post.title}
-                      style={formstyle}
-
-                      />
-                    </Typography>
-                    <h4>작성자 : {post.author}</h4>
-                    <h4>작성일 : {post.created_at}</h4>
-                    <img src={post.image} alt=""/>
-                    <h2>{post.content}</h2>
+                    
+                    <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
+                    <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
+                    {/* <img src={post.image} alt=""/> */}
+                    <h3 style={{fontWeight:400}}>{post.content}</h3>
 
                   </CardContent>
                   <CardActions>
-                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small" style={buttonstyle2}>삭제하기</Button>
                     {/* <Button value={post.id} onClick={(event) => this.handlingUpdate(post.id)} color="secondary" size="small">수정하기</Button> */}
                     <Button href={format('./update/{}',post.id)}>
                         수정하기
                     </Button>
-  
                   </CardActions>
                </Card>
               )
@@ -202,6 +201,7 @@ export class Home extends Component {
   }
 }
 
+
 // 게시글 수정하기
 export class Update extends Component {
 
@@ -213,13 +213,24 @@ export class Update extends Component {
       content: "",
       author: "",
       results: [],
+      update_results: []
     }
   }
 
+componentDidMount() {
+  this.getDetail()
+}
+
+async getDetail(){
+  const _results = await api.getDetail(this.props.match.params.id)
+  console.log(_results)
+  this.setState({update_results:_results.data})
+}
+
+//
   handlingChange = (event) => {
     this.setState({[event.target.name]: event.target.value})    
   }
-
   handlingUpdate = async (event) => {
     event.preventDefault() // event의 기본적인 기능을 하지않게 함
     const id = this.props.match.params.id 
@@ -232,6 +243,10 @@ export class Update extends Component {
     })
     console.log("수정 완료!", result);
     this.setState({title: '', content: '', author: ''})
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
   }
 
   render() {
@@ -260,11 +275,11 @@ export class Update extends Component {
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <h2>{id}</h2>
               <form className="PostingForm" onSubmit={this.handlingUpdate}>
+                제목:
                 <TextField
                   id="outlined-name"
-                  label="글 제목"
+                  label={this.state.update_results["title"]}
                   name="title"
                   value={this.state.title}
                   onChange={this.handlingChange}
@@ -272,27 +287,20 @@ export class Update extends Component {
                   variant="outlined"
                   style={formstyle}
                 />
+                작성자:
                 <TextField
                   id="outlined-name"
-                  label="name"
+                  label={this.state.update_results["author"]}
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
                 />
-
-                <input 
-                  type="file" 
-                  name="image"
-                  value={this.state.image}
-                  style={filestyle}
-                  className="filebutton"
-                  onChange={this.handlingChange}></input>
-
+                내용:
                 <TextField
                   id="outlined-name"
-                  label="본문"
+                  label={this.state.update_results["content"]}
                   name="content"
                   multiline
                   rowsMax="4"
@@ -305,8 +313,8 @@ export class Update extends Component {
                 />
 
                 {/* <br /> */}
-                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>
-                {/* <Button value={id} onClick={(event) => this.handlingUpdate(id)} color="secondary" size="small">수정하기</Button> */}
+                <Button variant="outlined" color="primary" type="submit" style={buttonstyle}>수정하기</Button>                {/* <Button color="primary" size="small" onClick={(event) => {this.handlingUpdate(post.id, this.state.title, this.state.content)}}>수정하기</Button> */}
+
               </form>
             </Paper>
           </div>
@@ -330,25 +338,20 @@ export class Login extends Component {
   handlingChange = (event) => {
     this.setState({[event.target.name] : event.target.value})
   }
-  // handlingSubmit = () => {
-  //   api.createPost()
-  // }
   
   render() {
     return (
       <div>
-
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
-        <h1>asdasd</h1>
-
       </div>
     )
   }
 }
-export class Signup extends Component {
+
+export class Cal extends Component {
   state = {
     date: new Date(),
   }
@@ -358,13 +361,13 @@ export class Signup extends Component {
   render() {
     return (
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
+        <center>
     <Calendar
       onChange={this.onChange}
       value={this.state.date}
+      
     />
+    </center>
     </div>
     )
   }
@@ -400,36 +403,4 @@ export default function FadeMenu() {
       </Menu>
     </div>
   );
-}
-export class Third extends Component {
-  render() {
-    return (
-      <div>
-        <Link to={`${this.props.match.url}/1`} style={{ marginRight: '5px' }}>
-          1번
-        </Link>
-        <Link to={`${this.props.match.url}/2`}>2번</Link>
-        <Route
-          exact
-          path={this.props.match.url}
-          render={() => (
-            <div>
-              <h3>id를 선택해 주세요.</h3>
-            </div>
-          )}
-        />
-        <Route path={`${this.props.match.url}/:id`} component={Item} />
-      </div>
-    )
-  }
-}
-
-class Item extends Component {
-  render() {
-    return (
-      <div>
-        <h3>{this.props.match.params.id}</h3>
-      </div>
-    )
-  }
 }
