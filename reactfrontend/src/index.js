@@ -38,7 +38,6 @@ ReactDOM.render(
       <Header />
       <Route exact path="/" component={Home} />
       <Route path="/cal" component={Cal} />
-      <Route path="/third" component={Third} />
       <Route path="/update/:id" component={Update} />
     </div>
   </Router>,
