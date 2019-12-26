@@ -203,10 +203,13 @@ export class Home extends Component {
                       
                       />
                     </Typography>
+                    <div>
                     <h4><span style={spanstyle}>작성자</span>  <span style={{fontWeight:400}}>{post.author}</span></h4>
                     <h4><span style={spanstyle}>작성일</span>  <span style={{fontWeight:400}}>{moment(post.created_at).format('LLL')}</span></h4>
                     <img src={post.image} alt=""/>
                     <h3 style={{fontWeight:400}}>{post.content}</h3>
+                    </div>
+                    
 
                   </CardContent>
                   <CardActions>
