@@ -1,53 +1,141 @@
 import React from 'react';
-//import logo from './logo.svg';
-import './detail.css';
+import './App.css';
+// handlingSubmit() 에서 사용
+import api from './api';
+import PostView from './Components/PostView';
+
+import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-function App() {
-  return (
-    <div className="App">
-    <div className="item">
-      <h2>GOODS</h2>
-      <div className="item-image" >
-      <Paper elevation={3} />
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: "",
+      content: "",
+      results: [],
+    }
+  }
+
+  componentDidMount() {
+    this.getPosts()
+  }
+
+  async getPosts() {
+    const _results = await api.getAllPosts()
+    console.log(_results)
+    this.setState({results: _results.data})
+  }
+
+  handlingChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})    
+  }
+
+  handlingDelete = async (id) => {
+    await api.deletePost(id)
+    this.getPosts()
+  }
+
+  handlingSubmit = async (event) => {
+    event.preventDefault() // event의 기본적인 기능을 하지않게 함
+    let result = await api.createPost(
+      {
+        title: this.state.title,
+        content: this.state.content,
+      }
+    );
+    console.log("작성 완료!", result);
+    this.setState({title: '', content: ''})
+    this.getPosts()
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Container maxWidth="lg">
+          <div className="fixed">
+          <div className="PostingSection">
+            <Paper className="PostingPaper">
+              <h2>대나무 숲 글 작성하기</h2>
+              <form className="PostingForm" onSubmit={this.handlingSubmit}>
+                <TextField
+                  id="outlined-name"
+                  label="글 제목"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <TextField
+                  파일자리
+                />
+                {/* <br /> */}
+
+                {/* <textarea 
+                  name="content"
+                  value={this.state.content}
+                  onChange={this.handlingChange}
+                /> */}
+
+                <TextField
+                  id="outlined-name"
+                  label="본문"
+                  name="content"
+                  multiline
+                  rowsMax="4"
+                  value={this.state.content}
+                  onChange={this.handlingChange}
+                  margin="normal"
+                  variant="outlined"
+                  className="outline-content"
+                />
+
+                {/* <br /> */}
+                
+                <Button variant="outlined" color="primary" type="submit">제출하기</Button>
+              </form>
+            </Paper>
+          </div>
+</div>
+<div className="none-fixed">
+          <div className="ViewSection">
+            {
+              this.state.results.map(
+                (post) =>
+                <Card className={'card'}>
+                  <CardContent>
+                    <Typography className={'card-title'} color="textSecondary" gutterBottom>
+                      {post.id}번째 대나무
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                      <PostView
+                      key={post.id}
+                      title={post.title}
+                      content={post.content}
+                      />
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
+                  </CardActions>
+               </Card>
+              )
+            }
+          </div>
+          </div>
+        </Container>
+      </div>
       
-      </div>
-      <div className="item-detail">
-
-      </div>
-    </div>
-    <div className="comment">
-        <div className="comment-write">
-        <TextField id="outlined-search" label="Search field" type="search" variant="outlined" />
-        </div>
-        <div className="comment-view">
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-            <React.Fragment>
-              
-              {" — I'll be in your neighborhood doing errands this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-
-        </div>
-    </div>
-  </div>
-  );
+    )
+  }
 }
 
 export default App;
