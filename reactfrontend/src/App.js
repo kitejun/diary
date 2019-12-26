@@ -23,6 +23,7 @@ import Header from './Header.js'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
+import Calendar from 'react-calendar';
 
 export class Home extends Component {
   
@@ -187,6 +188,7 @@ export class Home extends Component {
         </Container>
       </div>
     )
+  
   }
 }
 
@@ -211,23 +213,36 @@ export class Login extends Component {
   render() {
     return (
       <div>
+
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
         <h2>1, 로그인 페이지</h2>
+        <h1>asdasd</h1>
+
       </div>
     )
   }
 }
 
 export class Signup extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>
-        <h3>2, 회원가입 페이지</h3>
-        <h2>1, 로그인 페이지</h2>
-        <h2>1, 로그인 페이지</h2>
-      </div>
+        <br></br>
+        <br></br>
+        <br></br>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+    />
+    </div>
     )
   }
 }
