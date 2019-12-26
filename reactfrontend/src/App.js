@@ -13,6 +13,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Header from './Header.js'
+<<<<<<< Updated upstream
+=======
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
+import Calendar from 'react-calendar';
+import KakaoLogin from 'react-kakao-login';
+>>>>>>> Stashed changes
 
 
 export class Home extends Component {
@@ -130,6 +138,7 @@ export class Home extends Component {
         </Container>
       </div>
     )
+  
   }
 }
 
@@ -138,17 +147,44 @@ export class First extends Component {
   render() {
     return (
       <div>
+<<<<<<< Updated upstream
         <h2>1, 첫번째 페이지</h2>
+=======
+        <h1>asdasd</h1>
+>>>>>>> Stashed changes
       </div>
     )
   }
 }
 
+<<<<<<< Updated upstream
 export class Second extends Component {
+=======
+export class Signup extends Component {
+  state = {
+    date: new Date(),
+  }
+   
+  onChange = date => this.setState({ date })
+
+>>>>>>> Stashed changes
   render() {
     return (
+   
       <div>
+<<<<<<< Updated upstream
         <h3>2, 두번째 페이지</h3>
+=======
+            <div>
+        <br></br>
+        <br></br>
+        <br></br>
+    <Calendar
+      onChange={this.onChange}
+      value={this.state.date}
+    />
+    </div>
+>>>>>>> Stashed changes
       </div>
     )
   }
