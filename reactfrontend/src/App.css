@@ -4,7 +4,8 @@ body {
 }
 .img{
   position: relative;
-  
+  float: right;
+  bottom: 28px;
 }
 .App{
   font-family: 배달의민족 주아;
@@ -27,7 +28,8 @@ body {
 
 .PostingPaper{
   margin-right: 1rem;
-  padding: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 .PostingPaper h2{
   text-align: center;
@@ -42,7 +44,8 @@ body {
 }
 
 .PostingSection{
-  float: left;
+  float: right;
+  margin-right: 4rem;
   width:80%;
   height: 50rem;
 }
@@ -59,12 +62,13 @@ body {
 }
 .outline-content div{
   height: 12rem;
+  
 }
-.filebutton input{
+/* .filebutton input{
   height: 10rem;
   width: 10rem;
   background-color: cadetblue;
-}
+} */
 @media screen and (max-width: 1000px)  {
   .PostingSection{
     float: none;
