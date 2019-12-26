@@ -13,6 +13,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 import Header from './Header.js'
 
 
@@ -41,10 +47,10 @@ export class Home extends Component {
     this.setState({[event.target.name]: event.target.value})    
   }
 
-  // handlingDelete = async (id) => {
-  //   await api.deletePost(id)
-  //   this.getPosts()
-  // }
+  handlingDelete = async (id) => {
+     await api.deletePost(id)
+     this.getPosts()
+   }
   
   handleImageChange = (e) => {
     this.setState({
@@ -151,9 +157,8 @@ export class Home extends Component {
 export class Login extends Component {
   render() {
     return (
-      <div>
-        <h2>1, 로그인 페이지</h2>
-      </div>
+     <div>회원가입</div>
+  
     )
   }
 }

@@ -7,7 +7,6 @@ import Header from './Header.js';
 import * as serviceworker from './serviceWorker';
 
 ReactDOM.render(
-
   <Router>
     <div>
       <Header />

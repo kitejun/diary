@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 class Header extends Component {
     render() {
       return (
-        <div>
+        <div class="nav_wrapper"> 
+     
+           <nav class="menu">
           <ul>
             <li>
-              <Link to={'/'}>홈</Link>
+              <Link to={'/'}>메인</Link>
             </li>
             <li>
               <Link to={'/login'}>로그인</Link>
@@ -19,6 +21,7 @@ class Header extends Component {
               <Link to={'/third'}>테스트</Link>
             </li>
           </ul>
+          </nav>
         </div>
       )
     }
