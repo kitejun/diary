@@ -22,8 +22,7 @@ export class Home extends Component {
     this.state = {
       title: "",
       content: "",
-      // image: "",
-      author: "",
+      // image: null,
       results: [],
     }
   }
@@ -42,10 +41,10 @@ export class Home extends Component {
     this.setState({[event.target.name]: event.target.value})    
   }
 
-  handlingDelete = async (id) => {
-    await api.deletePost(id)
-    this.getPosts()
-  }
+  // handlingDelete = async (id) => {
+  //   await api.deletePost(id)
+  //   this.getPosts()
+  // }
   
   handleImageChange = (e) => {
     this.setState({
@@ -59,12 +58,10 @@ export class Home extends Component {
       {
         title: this.state.title,
         content: this.state.content,
-        author: this.state.author,
-        // image: this.state.image,
       }
     );
     console.log("작성 완료!", result);
-    this.setState({title: '', content: '', author: ''})
+    this.setState({title: '', content: ''})
     this.getPosts()
   }
 
@@ -136,7 +133,6 @@ export class Home extends Component {
                     </Typography>
                     <img src={post.image} alt=""/>
                     <h2>{post.content}</h2>
-                    <h2>작성자 : {post.author}</h2>
                   </CardContent>
                   <CardActions>
                     <Button value={post.id} onClick={(event) => this.handlingDelete(post.id)} color="secondary" size="small">삭제하기</Button>
@@ -153,22 +149,6 @@ export class Home extends Component {
 
 
 export class Login extends Component {
-  
-  constructor(props){
-    super(props)
-    this.state = {
-      id : '',
-      password : '',
-    }
-  }
-
-  handlingChange = (event) => {
-    this.setState({[event.target.name] : event.target.value})
-  }
-  // handlingSubmit = () => {
-  //   api.createPost()
-  // }
-  
   render() {
     return (
       <div>
