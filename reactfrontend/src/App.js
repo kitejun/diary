@@ -231,9 +231,21 @@ export class Update extends Component {
       content: "",
       author: "",
       results: [],
+      update_results: []
     }
   }
+//
+componentDidMount() {
+  this.getDetail()
+}
 
+async getDetail(){
+  const _results = await api.getDetail(this.props.match.params.id)
+  console.log(_results)
+  this.setState({update_results:_results.data})
+}
+
+//
   handlingChange = (event) => {
     this.setState({[event.target.name]: event.target.value})    
   }
@@ -278,11 +290,11 @@ export class Update extends Component {
           <div className="fixed">
           <div className="PostingSection">
             <Paper className="PostingPaper"  style={backstyle}>
-              <h2>{id}</h2>
               <form className="PostingForm" onSubmit={this.handlingSubmit}>
+                제목:
                 <TextField
                   id="outlined-name"
-                  label="글 제목"
+                  label={this.state.update_results["title"]}
                   name="title"
                   value={this.state.title}
                   onChange={this.handlingChange}
@@ -290,19 +302,20 @@ export class Update extends Component {
                   variant="outlined"
                   style={formstyle}
                 />
+                작성자:
                 <TextField
                   id="outlined-name"
-                  label="닉네임"
+                  label={this.state.update_results["author"]}
                   name="author"
                   value={this.state.author}
                   onChange={this.handlingChange}
                   margin="normal"
                   variant="outlined"
                 />
-
+                내용:
                 <TextField
                   id="outlined-name"
-                  label="본문"
+                  label={this.state.update_results["content"]}
                   name="content"
                   multiline
                   rowsMax="4"
@@ -312,7 +325,6 @@ export class Update extends Component {
                   variant="outlined"
                   className="outline-content"
                   style={formstyle}
-
                 />
 
                 {/* <br /> */}
