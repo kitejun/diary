@@ -11,8 +11,8 @@ __김연준(팀장), 박현욱, 양소영, 이찬우, 이상현, 박태영, 류�
 ------------------------------
 1. 비동기 Diary Web사이트 
 
-<img src="/images/1.png" width="50%">
-<img src="/images/2.png" width="50%">
+<img src="/images/1.png" width="100%">
+<img src="/images/2.png" width="100%">
 
 ### 1. 제작 목적
 ------------------------------
